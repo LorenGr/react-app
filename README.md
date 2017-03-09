@@ -1,1 +1,3 @@
-# react-app
+# Loren Grixti
+## Personal Project
+### react-dashboard
