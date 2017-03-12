@@ -18,7 +18,16 @@ module.exports = {
         loaders: [
             {test: /\.js$/, exclude: /node_modules/, loaders: ['react-hot-loader', 'babel-loader']},
             {test: /\.less$/, exclude: /node_modules/, loader: lessLoader},
-            {test: /\.css$/, exclude: /node_modules/, loader: ['style-loader', 'css-loader']}
+            {test: /\.css$/, exclude: /node_modules/, loader: ['style-loader', 'css-loader']},
+            {
+                'loader': 'babel-loader',
+                'test': /\.js$/,
+                'exclude': /node_modules/,
+                'query': {
+                    'plugins': ['lodash'],
+                    'presets': ["es2015"]
+                }
+            }
         ]
     },
     devServer: {

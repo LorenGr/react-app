@@ -1,3 +1,6 @@
+import _ from 'lodash';
+import {remove} from 'lodash';
+
 export default function emails(state = {}, action) {
     let new_state;
 
@@ -19,6 +22,13 @@ export default function emails(state = {}, action) {
                 name: ""
             };
             return new_state;
+        case "EMAIL_DELETE" :
+            new_state = JSON.parse(JSON.stringify(state));
+            _.remove(new_state.list,
+                item => item.id === action.id
+            );
+            return new_state;
+
         default :
             return state;
     }

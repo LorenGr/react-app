@@ -7,6 +7,7 @@ class EmailListDelete extends React.Component {
     constructor(props) {
         super(props);
         this.modalHide = this.modalHide.bind(this);
+        this.emailDelete = this.emailDelete.bind(this);
     }
 
     render() {
@@ -20,10 +21,20 @@ class EmailListDelete extends React.Component {
                 </Modal.Header>
                 <Modal.Footer>
                     <Button onClick={this.modalHide}>No</Button>
-                    <Button bsStyle="primary">Yes</Button>
+                    <Button onClick={this.emailDelete} bsStyle="primary">Yes</Button>
                 </Modal.Footer>
             </Modal>
         );
+    }
+
+    emailDelete(event) {
+        this.props.dispatch({
+            type : "EMAIL_DELETE",
+            id : this.props.modal_delete.id
+        });
+        this.props.dispatch({
+            type: "EMAIL_DELETE_MODAL_HIDE"
+        });
     }
 
     modalHide(event) {
