@@ -1,6 +1,7 @@
 import React from 'react';
 import {Button, Glyphicon} from 'react-bootstrap';
 import {connect} from 'react-redux';
+import {Link} from 'react-router';
 
 class EmailListItem extends React.Component {
 
@@ -20,11 +21,11 @@ class EmailListItem extends React.Component {
                 <td>{this.dateToString(item.date)}</td>
                 <td>{item.bundle}</td>
                 <td>
-                    <a href={'/email-edit/' + item.id}>
+                    <Link to={'/email-edit/' + item.id}>
                         <Button bsSize="xsmall">
                             Edit <Glyphicon glyph="edit"/>
                         </Button>
-                    </a>
+                    </Link>
                 </td>
                 <td>
                     <Button bsSize="xsmall"

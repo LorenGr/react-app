@@ -1,10 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {createStore} from 'redux';
+import {createStore, applyMiddleware} from 'redux';
+import {browserHistory, Router, Route, IndexRoute} from 'react-router';
+import {syncHistoryWithStore, routerMiddleware} from 'react-router-redux';
 import {Provider} from 'react-redux';
 
 import './stylesheets/main.less';
 import App from './components/App';
+
+import Home from './pages/Home';
+import EmailEdit from './pages/EmailEdit';
+import NotFound from './pages/NotFound';
+
 import {reducers} from './reducers/index';
 
 let emails = [
@@ -39,11 +46,18 @@ const initial_state = {
     }
 };
 
-const store = createStore(reducers, initial_state);
-
+let middleware = applyMiddleware(routerMiddleware(browserHistory));
+const store = createStore(reducers, initial_state, middleware);
+const history = syncHistoryWithStore(browserHistory, store);
 
 ReactDOM.render(
     <Provider store={store}>
-        <App/>
+        <Router history={history}>
+            <Route path="/" component={App}>
+                <IndexRoute component={Home}/>
+                <Route path="email-edit(/:id)" component={EmailEdit}/>
+                <Route path="*" component={NotFound}/>
+            </Route>
+        </Router>
     </Provider>
     , document.getElementById('app'));
