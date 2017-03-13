@@ -1,12 +1,27 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Table} from 'react-bootstrap';
+import {Table, Pagination} from 'react-bootstrap';
 
 import EmailListItem from './EmailListItem';
 import EmailListDelete from './EmailListDelete';
 
+import {push} from 'react-router-redux';
+
 class EmailList extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.changePage = this.changePage.bind(this);
+    }
+
     render() {
+
+        const per_page = 3;
+        const pages = Math.ceil(this.props.emails.length / per_page);
+        const current_page = this.props.page;
+        const start_offset = (current_page - 1) * per_page;
+        let start_count = 0;
+
         return (
             <div>
                 <EmailListDelete/>
@@ -24,20 +39,34 @@ class EmailList extends React.Component {
                     </thead>
                     <tbody>
                     {this.props.emails.map((email, index) => {
-                        return (
-                            <EmailListItem key={email.id} item={email}/>
-                        )
+                        if (index >= start_offset && start_count < per_page) {
+                            start_count++;
+                            return (
+                                <EmailListItem key={email.id} item={email}/>
+                            )
+                        }
                     })}
                     </tbody>
                 </Table>
+                <Pagination className="emails-pagination pull-right"
+                            bsSize="medium" maxButtons={10}
+                            first last next prev boundaryLinks
+                            items={pages}
+                            activePage={current_page}
+                            onSelect={this.changePage}/>
             </div>
-        )
+        );
+    }
+
+    changePage(page) {
+        this.props.dispatch(push('/?page=' + page));
     }
 }
 
 function mapStateToProps(state) {
     return ({
-        emails: state.emails.list
+        emails: state.emails.list,
+        page : Number(state.routing.locationBeforeTransitions.query.page) || 1
     });
 }
 

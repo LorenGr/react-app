@@ -38,6 +38,14 @@ let emails = [
         subject: 'Party invitation',
         bundle: "personal",
         date: new Date()
+    },
+    {
+        id: 4,
+        from: "Montreal Post",
+        to: "loren",
+        subject: 'Delivery Confirmation',
+        bundle: "purchases",
+        date: new Date()
     }
 ];
 const initial_state = {
