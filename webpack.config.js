@@ -7,6 +7,7 @@ var webpack = require("webpack"),
 module.exports = {
     entry: [
         'babel-polyfill',
+        'react-hot-loader/patch',
         __dirname + '/src' + '/index.js'
     ],
     output: {
@@ -15,20 +16,31 @@ module.exports = {
         filename: 'bundle.js'
     },
     module: {
-        loaders: [
-            {test: /\.js$/, exclude: /node_modules/, loaders: ['react-hot-loader', 'babel-loader']},
+        rules: [
             {test: /\.less$/, exclude: /node_modules/, loader: lessLoader},
             {test: /\.css$/, exclude: /node_modules/, loader: ['style-loader', 'css-loader']},
             {
-                'loader': 'babel-loader',
-                'test': /\.js$/,
-                'exclude': /node_modules/,
-                'query': {
-                    'plugins': ['lodash'],
-                    'presets': ["es2015"]
-                }
-            }
-        ]
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: [
+                    {
+                        loader: 'react-hot-loader/webpack'
+                    },
+                    {
+                        loader: 'babel-loader',
+                        options: {
+                            'plugins': [
+                                'lodash',
+                                'transform-class-properties'
+                            ],
+                            'presets': [
+                                "es2015",
+                                "react",
+                                "stage-3"
+                            ]
+                        }
+                    }]
+            }]
     },
     devServer: {
         contentBase: __dirname + '/public'

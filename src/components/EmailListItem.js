@@ -16,7 +16,7 @@ class EmailListItem extends React.Component {
         return (
             <tr>
                 <td>{item.from}</td>
-                <td>{item.to}</td>
+                <td>{item.recipient}</td>
                 <td>{item.subject}</td>
                 <td>{this.dateToString(item.date)}</td>
                 <td>{item.bundle}</td>

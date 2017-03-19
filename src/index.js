@@ -4,10 +4,9 @@ import {createStore, applyMiddleware} from 'redux';
 import {browserHistory, Router, Route, IndexRoute} from 'react-router';
 import {syncHistoryWithStore, routerMiddleware} from 'react-router-redux';
 import {Provider} from 'react-redux';
-
 import './stylesheets/main.less';
 import App from './components/App';
-
+import {AppContainer} from 'react-hot-loader';
 import Home from './pages/Home';
 import EmailEdit from './pages/EmailEdit';
 import NotFound from './pages/NotFound';
@@ -18,7 +17,7 @@ let emails = [
     {
         id: 1,
         from: "hydroquebec",
-        to: "loren",
+        recipient: "loren",
         subject: 'BILL PAYMENTS',
         bundle: "financial",
         date: new Date()
@@ -26,7 +25,7 @@ let emails = [
     {
         id: 2,
         from: "linkedin",
-        to: "loren",
+        recipient: "loren",
         subject: 'New Opportunity!',
         bundle: "updates",
         date: new Date()
@@ -34,7 +33,7 @@ let emails = [
     {
         id: 3,
         from: "john",
-        to: "loren",
+        recipient: "loren",
         subject: 'Party invitation',
         bundle: "personal",
         date: new Date()
@@ -42,7 +41,7 @@ let emails = [
     {
         id: 4,
         from: "Montreal Post",
-        to: "loren",
+        recipient: "loren",
         subject: 'Delivery Confirmation',
         bundle: "purchases",
         date: new Date()
@@ -58,14 +57,27 @@ let middleware = applyMiddleware(routerMiddleware(browserHistory));
 const store = createStore(reducers, initial_state, middleware);
 const history = syncHistoryWithStore(browserHistory, store);
 
-ReactDOM.render(
-    <Provider store={store}>
-        <Router history={history}>
-            <Route path="/" component={App}>
-                <IndexRoute component={Home}/>
-                <Route path="email-edit(/:id)" component={EmailEdit}/>
-                <Route path="*" component={NotFound}/>
-            </Route>
-        </Router>
-    </Provider>
-    , document.getElementById('app'));
+
+const render = Component => {
+    ReactDOM.render(
+        <AppContainer>
+            <Provider store={store}>
+                <Router history={history}>
+                    <Route path="/" component={App}>
+                        <IndexRoute component={Home}/>
+                        <Route path="email-edit(/:id)" component={EmailEdit}/>
+                        <Route path="*" component={NotFound}/>
+                    </Route>
+                </Router>
+            </Provider>
+        </AppContainer>
+        , document.getElementById('app')
+    )
+};
+render(App);
+
+if (module.hot) {
+    module.hot.accept('./components/App', () => {
+        render(App)
+    })
+}
