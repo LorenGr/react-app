@@ -17,9 +17,12 @@ class EmailEdit extends React.Component {
 
 
     render() {
+
+        const isEditMode = this.form_type == 'edit';
+
         return (
             <div>
-                <PageHeader>Create Email</PageHeader>
+                <PageHeader>{isEditMode?'Edit':'Create'} Email</PageHeader>
 
                 <Form horizontal>
                     <Field name="recipient"
@@ -28,7 +31,7 @@ class EmailEdit extends React.Component {
                            component={EmailEdit.renderSubject}/>
                     <FormGroup>
                         <Col smOffset={2} sm={8}>
-                            <Button type="submit">Save</Button>
+                            <Button type="submit">{isEditMode?'Save':'Create'}</Button>
                         </Col>
                     </FormGroup>
                 </Form>

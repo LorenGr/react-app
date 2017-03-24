@@ -1,0 +1,6 @@
+node_modules/
+.idea/jsLibraryMappings.xml
+.idea/misc.xml
+.idea/workspace.xml
+public/css/
+public/js/
