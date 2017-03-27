@@ -22,16 +22,18 @@ class EmailEdit extends React.Component {
 
         return (
             <div>
-                <PageHeader>{isEditMode?'Edit':'Create'} Email</PageHeader>
+                <PageHeader>{isEditMode ? 'Edit' : 'Create'} Email</PageHeader>
 
-                <Form horizontal>
+                <Form onSubmit={this.props.handleSubmit(EmailEdit.submit) } horizontal>
                     <Field name="recipient"
                            component={EmailEdit.renderRecipient}/>
                     <Field name="subject"
                            component={EmailEdit.renderSubject}/>
                     <FormGroup>
                         <Col smOffset={2} sm={8}>
-                            <Button type="submit">{isEditMode?'Save':'Create'}</Button>
+                            <Button type="submit" disabled={this.props.submitting}>{isEditMode ? 'Save' : 'Create'}</Button>
+                            <Button type="button" disabled={this.props.pristine || this.props.submitting}
+                                    onClick={this.props.reset}>Reset</Button>
                         </Col>
                     </FormGroup>
                 </Form>
@@ -39,7 +41,11 @@ class EmailEdit extends React.Component {
         );
     }
 
-    static renderRecipient(props) {
+    static submit() {
+
+    }
+
+    static renderRecipient({input, label, type, meta: {touched, error}}) {
         return (
             <FormGroup>
                 <Col sm={2}>Recipient</Col>
@@ -48,12 +54,12 @@ class EmailEdit extends React.Component {
                         <InputGroup.Addon>
                             <Glyphicon glyph="user"/>
                         </InputGroup.Addon>
-                        <FormControl {...props.input}
+                        <FormControl {...input}
                                      id="recipient"
                                      type="text"
                                      placeholder="Recipient"/>
-
                     </InputGroup>
+                    {touched && error && <span>{error}</span>}
                 </Col>
             </FormGroup>
         );
@@ -77,7 +83,15 @@ class EmailEdit extends React.Component {
 
 
 EmailEdit = reduxForm({
-    form: 'email_edit'
+    form: 'email_edit',
+    validate: function (values) {
+        let errors = {};
+        if (!values.recipient) {
+            errors.recipient = "Please add a recipient to your email.";
+        }
+        return errors;
+
+    }
 })(EmailEdit);
 
 function mapEditStateToProps(state, own_props) {
