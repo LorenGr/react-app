@@ -1,5 +1,5 @@
 import React from 'react';
-import {PageHeader, Form, Col, FormGroup, FormControl, Button, InputGroup, Glyphicon} from 'react-bootstrap';
+import {PageHeader, Form, Col, FormGroup, FormControl, Button, InputGroup, Glyphicon, HelpBlock} from 'react-bootstrap';
 import {Field, reduxForm} from 'redux-form';
 import {connect} from 'react-redux';
 
@@ -31,8 +31,15 @@ class EmailEdit extends React.Component {
                            component={EmailEdit.renderSubject}/>
                     <FormGroup>
                         <Col smOffset={2} sm={8}>
-                            <Button type="submit" disabled={this.props.submitting}>{isEditMode ? 'Save' : 'Create'}</Button>
-                            <Button type="button" disabled={this.props.pristine || this.props.submitting}
+
+                            <Button type="submit"
+                                    disabled={this.props.submitting}
+                                   >
+                                {isEditMode ? 'Save' : 'Create'}
+                            </Button>
+
+                            <Button type="button"
+                                    disabled={this.props.pristine || this.props.submitting}
                                     onClick={this.props.reset}>Reset</Button>
                         </Col>
                     </FormGroup>
@@ -59,7 +66,7 @@ class EmailEdit extends React.Component {
                                      type="text"
                                      placeholder="Recipient"/>
                     </InputGroup>
-                    {touched && error && <span>{error}</span>}
+                    <HelpBlock>{touched && error && <span>{error}</span>}</HelpBlock>
                 </Col>
             </FormGroup>
         );

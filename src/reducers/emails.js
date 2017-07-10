@@ -26,6 +26,10 @@ export default function emails(state = {}, action) {
             );
             return new_state;
 
+        case "EMAILS_FETCH_LIST_SUCCESS" :
+            new_state.list = action.emails;
+            return new_state;
+
         default :
             return state;
     }

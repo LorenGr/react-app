@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Table, Pagination} from 'react-bootstrap';
+import {Table, Pagination, ProgressBar} from 'react-bootstrap';
 
 import EmailListItem from './EmailListItem';
 import EmailListDelete from './EmailListDelete';
@@ -11,6 +11,13 @@ class EmailList extends React.Component {
 
     constructor(props) {
         super(props);
+
+        if (!this.props.emails.length) {
+            this.props.dispatch({
+                type: 'EMAILS_FETCH_LIST'
+            });
+        }
+
         this.changePage = this.changePage.bind(this);
     }
 
@@ -22,7 +29,7 @@ class EmailList extends React.Component {
         const start_offset = (current_page - 1) * per_page;
         let start_count = 0;
 
-        return (
+        return this.props.emails.length ? (
             <div>
                 <EmailListDelete/>
                 <Table bordered hover responsive striped>
@@ -55,6 +62,8 @@ class EmailList extends React.Component {
                             activePage={current_page}
                             onSelect={this.changePage}/>
             </div>
+        ) : (
+            <ProgressBar active now={100}/>
         );
     }
 
@@ -65,8 +74,8 @@ class EmailList extends React.Component {
 
 function mapStateToProps(state) {
     return ({
-        emails: state.emails.list,
-        page : Number(state.routing.locationBeforeTransitions.query.page) || 1
+        emails: state.emails.list || [],
+        page: Number(state.routing.locationBeforeTransitions.query.page) || 1
     });
 }
 

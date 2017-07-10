@@ -1,62 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {createStore, applyMiddleware} from 'redux';
+import {createStore, applyMiddleware, compose} from 'redux';
 import {browserHistory, Router, Route, IndexRoute} from 'react-router';
 import {syncHistoryWithStore, routerMiddleware} from 'react-router-redux';
 import {Provider} from 'react-redux';
+import createSagaMiddleware from 'redux-saga';
 import './stylesheets/main.less';
 import App from './components/App';
 import {AppContainer} from 'react-hot-loader';
 import Home from './pages/Home';
+import {sagas} from './sagas/index';
 import EmailEdit from './pages/EmailEdit';
 import NotFound from './pages/NotFound';
 
 import {reducers} from './reducers/index';
 
-let emails = [
-    {
-        id: 1,
-        from: "hydroquebec",
-        recipient: "loren",
-        subject: 'BILL PAYMENTS',
-        bundle: "financial",
-        date: new Date()
-    },
-    {
-        id: 2,
-        from: "linkedin",
-        recipient: "loren",
-        subject: 'New Opportunity!',
-        bundle: "updates",
-        date: new Date()
-    },
-    {
-        id: 3,
-        from: "john",
-        recipient: "loren",
-        subject: 'Party invitation',
-        bundle: "personal",
-        date: new Date()
-    },
-    {
-        id: 4,
-        from: "Montreal Post",
-        recipient: "loren",
-        subject: 'Delivery Confirmation',
-        bundle: "purchases",
-        date: new Date()
-    }
-];
-const initial_state = {
-    emails: {
-        list: emails
-    }
-};
+//Create Store
+const sagaMiddleware = createSagaMiddleware();
 
-let middleware = applyMiddleware(routerMiddleware(browserHistory));
-const store = createStore(reducers, initial_state, middleware);
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(reducers, composeEnhancers(
+    applyMiddleware(routerMiddleware(browserHistory), sagaMiddleware)
+));
 const history = syncHistoryWithStore(browserHistory, store);
-
+sagaMiddleware.run(sagas);
 
 const render = Component => {
     ReactDOM.render(
