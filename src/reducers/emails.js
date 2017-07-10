@@ -47,7 +47,7 @@ export default function emails(state = {}, action) {
                     Object.assign(email, {
                         from: "Loren",
                         bundle: "Inbox",
-                        date: new Date(),
+                        date: action.date || new Date(),
                         recipient: action.recipient,
                         subject: action.subject
                     });
