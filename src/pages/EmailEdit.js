@@ -2,7 +2,7 @@ import React from 'react';
 import {PageHeader, Form, Col, FormGroup, FormControl, Button, InputGroup, Glyphicon, HelpBlock} from 'react-bootstrap';
 import {Field, reduxForm} from 'redux-form';
 import {connect} from 'react-redux';
-
+import {goBack} from 'react-router-redux';
 import _ from 'lodash';
 import {find} from 'lodash';
 
@@ -13,6 +13,8 @@ class EmailEdit extends React.Component {
     constructor(props) {
         super(props);
         this.form_type = (props.initialValues.id > 0 ? 'edit' : 'add');
+        this.submit = this.submit.bind(this);
+
     }
 
 
@@ -24,7 +26,7 @@ class EmailEdit extends React.Component {
             <div>
                 <PageHeader>{isEditMode ? 'Edit' : 'Create'} Email</PageHeader>
 
-                <Form onSubmit={this.props.handleSubmit(EmailEdit.submit) } horizontal>
+                <Form onSubmit={this.props.handleSubmit(this.submit) } horizontal>
                     <Field name="recipient"
                            component={EmailEdit.renderRecipient}/>
                     <Field name="subject"
@@ -34,7 +36,7 @@ class EmailEdit extends React.Component {
 
                             <Button type="submit"
                                     disabled={this.props.submitting}
-                                   >
+                            >
                                 {isEditMode ? 'Save' : 'Create'}
                             </Button>
 
@@ -48,8 +50,15 @@ class EmailEdit extends React.Component {
         );
     }
 
-    static submit() {
+    submit(values) {
+        this.props.dispatch({
+            type: "EMAILS_" + this.form_type.toUpperCase(),
+            id: values.id,
+            recipient: values.recipient,
+            subject: values.subject
+        });
 
+        this.props.dispatch(goBack());
     }
 
     static renderRecipient({input, label, type, meta: {touched, error}}) {

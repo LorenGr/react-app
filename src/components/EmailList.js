@@ -23,7 +23,7 @@ class EmailList extends React.Component {
 
     render() {
 
-        const per_page = 3;
+        const per_page = 5;
         const pages = Math.ceil(this.props.emails.length / per_page);
         const current_page = this.props.page;
         const start_offset = (current_page - 1) * per_page;

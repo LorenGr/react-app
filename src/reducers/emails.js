@@ -30,6 +30,29 @@ export default function emails(state = {}, action) {
             new_state.list = action.emails;
             return new_state;
 
+        case "EMAILS_ADD" :
+            new_state.list.push({
+                id: Number((Math.random() * 100000).toPrecision(6)),
+                recipient: action.recipient,
+                subject: action.subject
+            });
+            return new_state;
+
+        case "EMAILS_EDIT" :
+            for (const email of new_state.list) {
+                if (email.id === action.id) {
+                    Object.assign(email, {
+                        from: "Loren",
+                        bundle: "Inbox",
+                        date: new Date(),
+                        recipient: action.recipient,
+                        subject: action.subject
+                    });
+                    break;
+                }
+            }
+            return new_state;
+
         default :
             return state;
     }
