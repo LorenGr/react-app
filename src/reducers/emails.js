@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import {remove} from 'lodash';
+import {remove, uniqueId} from 'lodash';
 
 export default function emails(state = {}, action) {
     let new_state = JSON.parse(JSON.stringify(state));
@@ -32,7 +32,10 @@ export default function emails(state = {}, action) {
 
         case "EMAILS_ADD" :
             new_state.list.push({
-                id: Number((Math.random() * 100000).toPrecision(6)),
+                from: "Loren",
+                bundle: "Inbox",
+                date: action.date || new Date(),
+                id: action.id || _.uniqueId,
                 recipient: action.recipient,
                 subject: action.subject
             });
