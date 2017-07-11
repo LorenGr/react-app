@@ -1,0 +1,15 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+}
+.container {
+  width: 100%;
+}
+.progress {
+  margin: 10px auto;
+  width: 300px;
+}
+.fieldValidation {
+  display: block;
+}
