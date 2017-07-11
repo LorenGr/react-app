@@ -1,12 +1,14 @@
 import React from 'react';
-import {PageHeader, Form, Col, FormGroup, FormControl, Button, InputGroup, Glyphicon, HelpBlock} from 'react-bootstrap';
+import {PageHeader, Form, Col, FormGroup, FormControl, Button} from 'react-bootstrap';
 import {Field, reduxForm} from 'redux-form';
 import {connect} from 'react-redux';
 import {goBack} from 'react-router-redux';
 import _ from 'lodash';
 import {find} from 'lodash';
 
-class EmailEdit extends React.Component {
+import EmailEditField from '../components/EmailEditField';
+
+export class EmailEdit extends React.Component {
 
     form_type;
 
@@ -14,9 +16,7 @@ class EmailEdit extends React.Component {
         super(props);
         this.form_type = (props.initialValues.id > 0 ? 'edit' : 'add');
         this.submit = this.submit.bind(this);
-
     }
-
 
     render() {
 
@@ -27,16 +27,13 @@ class EmailEdit extends React.Component {
                 <PageHeader>{isEditMode ? 'Edit' : 'Create'} Email</PageHeader>
 
                 <Form onSubmit={this.props.handleSubmit(this.submit) } horizontal>
-                    <Field name="recipient"
-                           component={EmailEdit.renderRecipient}/>
-                    <Field name="subject"
-                           component={EmailEdit.renderSubject}/>
+                    <Field glyph="user" name="recipient" label="Recipient" component={EmailEditField}/>
+                    <Field glyph="pencil" name="subject" label="Subject" component={EmailEditField}/>
+
                     <FormGroup>
                         <Col smOffset={2} sm={8}>
 
-                            <Button type="submit"
-                                    disabled={this.props.submitting}
-                            >
+                            <Button type="submit" disabled={this.props.invalid || this.props.submitting}>
                                 {isEditMode ? 'Save' : 'Create'}
                             </Button>
 
@@ -60,45 +57,10 @@ class EmailEdit extends React.Component {
 
         this.props.dispatch(goBack());
     }
-
-    static renderRecipient({input, label, type, meta: {touched, error}}) {
-        return (
-            <FormGroup>
-                <Col sm={2}>Recipient</Col>
-                <Col sm={8}>
-                    <InputGroup>
-                        <InputGroup.Addon>
-                            <Glyphicon glyph="user"/>
-                        </InputGroup.Addon>
-                        <FormControl {...input}
-                                     id="recipient"
-                                     type="text"
-                                     placeholder="Recipient"/>
-                    </InputGroup>
-                    <HelpBlock>{touched && error && <span>{error}</span>}</HelpBlock>
-                </Col>
-            </FormGroup>
-        );
-    }
-
-    static renderSubject(props) {
-        return (
-            <FormGroup>
-                <Col sm={2}>Subject</Col>
-                <Col sm={8}>
-                    <FormControl {...props.input}
-                                 id="subject"
-                                 type="text"
-                                 placeholder="Subject"/>
-
-                </Col>
-            </FormGroup>
-        );
-    }
 }
 
 
-EmailEdit = reduxForm({
+const EmailEditForm = reduxForm({
     form: 'email_edit',
     validate: function (values) {
         let errors = {};
@@ -126,4 +88,4 @@ function mapEditStateToProps(state, own_props) {
     }
 }
 
-export default connect(mapEditStateToProps)(EmailEdit);
+export default connect(mapEditStateToProps)(EmailEditForm);
