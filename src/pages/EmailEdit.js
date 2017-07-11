@@ -1,5 +1,5 @@
 import React from 'react';
-import {PageHeader, Form, Col, FormGroup, FormControl, Button} from 'react-bootstrap';
+import {PageHeader, Form, Col, FormGroup, Button} from 'react-bootstrap';
 import {Field, reduxForm} from 'redux-form';
 import {connect} from 'react-redux';
 import {goBack} from 'react-router-redux';
@@ -24,7 +24,9 @@ export class EmailEdit extends React.Component {
 
         return (
             <div>
-                <PageHeader>{isEditMode ? 'Edit' : 'Create'} Email</PageHeader>
+                <PageHeader>
+                    <span>{isEditMode ? 'Edit' : 'Create'}</span> Email
+                </PageHeader>
 
                 <Form onSubmit={this.props.handleSubmit(this.submit) } horizontal>
                     <Field glyph="user" name="recipient" label="Recipient" component={EmailEditField}/>
