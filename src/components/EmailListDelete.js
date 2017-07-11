@@ -2,7 +2,7 @@ import React from 'react';
 import {Button, Modal} from 'react-bootstrap';
 import {connect} from 'react-redux';
 
-class EmailListDelete extends React.Component {
+export class EmailListDelete extends React.Component {
 
     constructor(props) {
         super(props);

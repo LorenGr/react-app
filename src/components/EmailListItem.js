@@ -3,7 +3,7 @@ import {Button, Glyphicon} from 'react-bootstrap';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
 
-class EmailListItem extends React.Component {
+export class EmailListItem extends React.Component {
 
     constructor(props) {
         super(props);
@@ -14,7 +14,7 @@ class EmailListItem extends React.Component {
     render() {
         const item = this.props.item;
         return (
-            <tr>
+            <tr className="ItemContainer">
                 <td>{item.from}</td>
                 <td>{item.recipient}</td>
                 <td>{item.subject}</td>

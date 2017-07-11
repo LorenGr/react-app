@@ -30,6 +30,7 @@
     "babel-runtime": "^6.23.0",
     "clean-webpack-plugin": "^0.1.15",
     "css-loader": "^0.26.4",
+    "enzyme": "^2.9.1",
     "extract-text-webpack-plugin": "^2.1.0",
     "ignore-styles": "^5.0.1",
     "jest": "^20.0.4",
@@ -37,6 +38,7 @@
     "less-loader": "^3.0.0",
     "lodash-webpack-plugin": "^0.11.2",
     "mocha": "^3.4.2",
+    "react-addons-test-utils": "^15.6.0",
     "react-hot-loader": "3.0.0-beta.6",
     "react-test-renderer": "^15.6.1",
     "style-loader": "^0.13.2",
@@ -45,7 +47,9 @@
   },
   "babel": {
     "presets": [
-      "es2015"
+      "es2015",
+      "react",
+      "stage-3"
     ]
   },
   "scripts": {

@@ -7,7 +7,7 @@ import EmailListDelete from './EmailListDelete';
 
 import {push} from 'react-router-redux';
 
-class EmailList extends React.Component {
+export class EmailList extends React.Component {
 
     constructor(props) {
         super(props);
