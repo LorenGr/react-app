@@ -55,7 +55,7 @@
   },
   "scripts": {
     "test": "nyc mocha --compilers js:babel-register --recursive --require babel-polyfill --require ignore-styles",
-    "start": "webpack-dev-server --historyApiFallback --content-base PhotoAlbum --inline --hot --host localhost --port 3000",
+    "start": "webpack-dev-server --historyApiFallback --inline --hot --host localhost --port 3000",
     "build": "webpack --config webpack.config.js"
   },
   "repository": {
