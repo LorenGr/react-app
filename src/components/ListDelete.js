@@ -2,7 +2,7 @@ import React from 'react';
 import {Button, Modal} from 'react-bootstrap';
 import {connect} from 'react-redux';
 
-export class EmailListDelete extends React.Component {
+export class ListDelete extends React.Component {
 
     constructor(props) {
         super(props);
@@ -29,25 +29,25 @@ export class EmailListDelete extends React.Component {
 
     emailDelete(event) {
         this.props.dispatch({
-            type : "EMAIL_DELETE",
+            type : "ITEM_DELETE",
             id : this.props.modal_delete.id
         });
         this.props.dispatch({
-            type: "EMAIL_DELETE_MODAL_HIDE"
+            type: "ITEM_DELETE_MODAL_HIDE"
         });
     }
 
     modalHide(event) {
         this.props.dispatch({
-            type: "EMAIL_DELETE_MODAL_HIDE"
+            type: "ITEM_DELETE_MODAL_HIDE"
         });
     }
 }
 function mapStateToProps(state) {
     let modal_delete;
 
-    if (state.emails.modal && state.emails.modal.EMAIL_DELETE) {
-        modal_delete = state.emails.modal.EMAIL_DELETE;
+    if (state.items.modal && state.items.modal.ITEM_DELETE) {
+        modal_delete = state.items.modal.ITEM_DELETE;
     } else {
         modal_delete = {
             show: false,
@@ -60,4 +60,4 @@ function mapStateToProps(state) {
     });
 }
 
-export default connect(mapStateToProps)(EmailListDelete);
+export default connect(mapStateToProps)(ListDelete);

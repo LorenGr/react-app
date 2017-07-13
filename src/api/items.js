@@ -1,13 +1,13 @@
-export default class ApiEmails {
+export default class ApiItems {
 
     static getList(action) {
         const timeout = 1000;
         return new Promise(resolve => {
 
-            var emails = [];
+            var items = [];
 
             for (let index = 0; index <= 30; index++) {
-                emails.push({
+                items.push({
                     id: index,
                     from: "recipient" + index,
                     recipient: "recipient" + index,
@@ -18,7 +18,7 @@ export default class ApiEmails {
             }
 
             setTimeout(() => {
-                resolve(emails);
+                resolve(items);
             }, timeout);
         });
     }

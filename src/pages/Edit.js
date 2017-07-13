@@ -6,9 +6,9 @@ import {goBack} from 'react-router-redux';
 import _ from 'lodash';
 import {find} from 'lodash';
 
-import EmailEditField from '../components/EmailEditField';
+import EditField from '../components/EditField';
 
-export class EmailEdit extends React.Component {
+export class Edit extends React.Component {
 
     form_type;
 
@@ -25,12 +25,12 @@ export class EmailEdit extends React.Component {
         return (
             <div>
                 <PageHeader>
-                    <span>{isEditMode ? 'Edit' : 'Create'}</span> Email
+                    <span>{isEditMode ? 'Edit' : 'Create'}</span> Photo
                 </PageHeader>
 
                 <Form onSubmit={this.props.handleSubmit(this.submit) } horizontal>
-                    <Field glyph="user" name="recipient" label="Recipient" component={EmailEditField}/>
-                    <Field glyph="pencil" name="subject" label="Subject" component={EmailEditField}/>
+                    <Field glyph="user" name="recipient" label="Recipient" component={EditField}/>
+                    <Field glyph="pencil" name="subject" label="Subject" component={EditField}/>
 
                     <FormGroup>
                         <Col smOffset={2} sm={8}>
@@ -51,7 +51,7 @@ export class EmailEdit extends React.Component {
 
     submit(values) {
         this.props.dispatch({
-            type: "EMAILS_" + this.form_type.toUpperCase(),
+            type: "ITEM_" + this.form_type.toUpperCase(),
             id: values.id,
             recipient: values.recipient,
             subject: values.subject
@@ -62,7 +62,7 @@ export class EmailEdit extends React.Component {
 }
 
 
-const EmailEditForm = reduxForm({
+const EditForm = reduxForm({
     form: 'email_edit',
     validate: function (values) {
         let errors = {};
@@ -72,12 +72,12 @@ const EmailEditForm = reduxForm({
         return errors;
 
     }
-})(EmailEdit);
+})(Edit);
 
 function mapEditStateToProps(state, own_props) {
 
     let form_data = _.find(
-            state.emails.list,
+            state.items.list,
             {id: Number(own_props.params.id)}
         ) || {
             id: 0,
@@ -90,4 +90,4 @@ function mapEditStateToProps(state, own_props) {
     }
 }
 
-export default connect(mapEditStateToProps)(EmailEditForm);
+export default connect(mapEditStateToProps)(EditForm);

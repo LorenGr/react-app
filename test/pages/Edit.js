@@ -1,9 +1,9 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 import assert from 'assert';
-import {EmailEdit} from '../../src/pages/EmailEdit';
+import {Edit} from '../../src/pages/Edit';
 
-describe("EmailEdit component", () => {
+describe("Edit component", () => {
     describe("Render", () => {
         it("should render the add or edit email form", () => {
             const props = {
@@ -16,7 +16,7 @@ describe("EmailEdit component", () => {
                 submitting: false
             };
 
-            const wrapper = shallow(<EmailEdit {...props} />);
+            const wrapper = shallow(<Edit {...props} />);
             assert.equal(wrapper.find('PageHeader span').text(),'Create');
 
         });

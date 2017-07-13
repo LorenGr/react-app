@@ -2,22 +2,22 @@ import React from 'react';
 import {shallow} from 'enzyme';
 import assert from 'assert';
 
-import {EmailList} from '../../src/components/EmailList';
+import {List} from '../../src/components/List';
 
-describe("EmailList component", () => {
+describe("List component", () => {
     describe("render", () => {
 
         it("should render table", () => {
             //Mock the props
             const props = {
                 page: 1,
-                emails: [
+                items: [
                     {
                         id: 0
                     }
                 ]
             };
-            const wrapper = shallow(<EmailList {...props} />);
+            const wrapper = shallow(<List {...props} />);
             assert.equal(wrapper.find('Table').length, 1);
             assert.equal(wrapper.find('Pagination').length, 1);
         });
@@ -26,11 +26,11 @@ describe("EmailList component", () => {
             //Mock the props
             const props = {
                 page: 1,
-                emails: [],
+                items: [],
                 dispatch: () => {
                 }
             };
-            const wrapper = shallow(<EmailList {...props} />);
+            const wrapper = shallow(<List {...props} />);
             assert.equal(wrapper.find('ProgressBar').length, 1);
         });
     });

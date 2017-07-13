@@ -1,9 +1,9 @@
 import {takeLatest} from 'redux-saga';
 import {fork} from 'redux-saga/effects';
-import {emailsFetchList} from './emails';
+import {itemsFetchList} from './items';
 
 
 //main saga generator
 export function* sagas() {
-    yield [fork(takeLatest, 'EMAILS_FETCH_LIST', emailsFetchList)];
+    yield [fork(takeLatest, 'ITEM_FETCH_LIST', itemsFetchList)];
 }

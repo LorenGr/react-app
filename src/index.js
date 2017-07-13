@@ -10,7 +10,7 @@ import App from './components/App';
 import {AppContainer} from 'react-hot-loader';
 import Home from './pages/Home';
 import {sagas} from './sagas/index';
-import EmailEdit from './pages/EmailEdit';
+import Edit from './pages/Edit';
 import NotFound from './pages/NotFound';
 
 import {reducers} from './reducers/index';
@@ -32,7 +32,7 @@ const render = Component => {
                 <Router history={history}>
                     <Route path="PhotoAlbum" component={App}>
                         <IndexRoute component={Home}/>
-                        <Route path="email-edit(/:id)" component={EmailEdit}/>
+                        <Route path="edit(/:id)" component={Edit}/>
                         <Route path="*" component={NotFound}/>
                     </Route>
                 </Router>

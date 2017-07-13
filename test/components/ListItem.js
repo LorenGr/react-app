@@ -2,9 +2,9 @@ import React from 'react';
 import {shallow} from 'enzyme';
 import assert from 'assert';
 
-import {EmailListItem} from '../../src/components/EmailListItem';
+import {ListItem} from '../../src/components/ListItem';
 
-describe("EmailListItem component", () => {
+describe("ListItem component", () => {
     describe("render", () => {
         it("should render component", () => {
 
@@ -15,7 +15,7 @@ describe("EmailListItem component", () => {
                 }
             };
 
-            const wrapper = shallow(<EmailListItem {...props} />);
+            const wrapper = shallow(<ListItem {...props} />);
             assert.equal(wrapper.find('.ItemContainer').length, 1);
             assert.equal(wrapper.find('Button').length, 2);
         });

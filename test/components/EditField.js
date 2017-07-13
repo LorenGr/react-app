@@ -2,9 +2,9 @@ import React from 'react';
 import {shallow} from 'enzyme';
 import assert from 'assert';
 
-import EmailEditField from '../../src/components/EmailEditField';
+import EditField from '../../src/components/EditField';
 
-describe("EmailEditField component", () => {
+describe("EditField component", () => {
     describe("render", () => {
         it("should render component", () => {
 
@@ -16,7 +16,7 @@ describe("EmailEditField component", () => {
                 input: {}
             };
 
-            const wrapper = shallow(<EmailEditField {...props} />);
+            const wrapper = shallow(<EditField {...props} />);
             assert.equal(wrapper.find('FormGroup').length, 1);
             assert.equal(wrapper.find('Col').length, 2);
 
@@ -36,7 +36,7 @@ describe("EmailEditField component", () => {
                 input: {}
             };
 
-            const wrapper = shallow(<EmailEditField {...props} />);
+            const wrapper = shallow(<EditField {...props} />);
             assert.equal(wrapper.find('FormGroup').length, 1);
             assert.equal(wrapper.find('Col').length, 2);
             assert.equal(wrapper.find('HelpBlock').children().text(), errorString);

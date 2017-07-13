@@ -1,12 +1,12 @@
 import React from 'react';
-import EmailList from '../components/EmailList';
+import List from '../components/List';
 
 export default class Home extends React.Component {
 
     render() {
         return (
             <div className="container">
-                <EmailList/>
+                <List/>
             </div>
         );
     }

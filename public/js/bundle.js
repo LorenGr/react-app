@@ -29534,17 +29534,17 @@ var _Home = __webpack_require__(1079);
 
 var _Home2 = _interopRequireDefault(_Home);
 
-var _index = __webpack_require__(1084);
+var _index = __webpack_require__(1083);
 
-var _EmailEdit = __webpack_require__(1078);
+var _Edit = __webpack_require__(1078);
 
-var _EmailEdit2 = _interopRequireDefault(_EmailEdit);
+var _Edit2 = _interopRequireDefault(_Edit);
 
 var _NotFound = __webpack_require__(1080);
 
 var _NotFound2 = _interopRequireDefault(_NotFound);
 
-var _index2 = __webpack_require__(1082);
+var _index2 = __webpack_require__(1081);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29570,7 +29570,7 @@ var render = function render(Component) {
                     _reactRouter.Route,
                     { path: 'PhotoAlbum', component: _App2.default },
                     _react2.default.createElement(_reactRouter.IndexRoute, { component: _Home2.default }),
-                    _react2.default.createElement(_reactRouter.Route, { path: 'email-edit(/:id)', component: _EmailEdit2.default }),
+                    _react2.default.createElement(_reactRouter.Route, { path: 'edit(/:id)', component: _Edit2.default }),
                     _react2.default.createElement(_reactRouter.Route, { path: '*', component: _NotFound2.default })
                 )
             )
@@ -60497,21 +60497,21 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var ApiEmails = function () {
-    function ApiEmails() {
-        _classCallCheck(this, ApiEmails);
+var ApiItems = function () {
+    function ApiItems() {
+        _classCallCheck(this, ApiItems);
     }
 
-    _createClass(ApiEmails, null, [{
+    _createClass(ApiItems, null, [{
         key: "getList",
         value: function getList(action) {
             var timeout = 1000;
             return new Promise(function (resolve) {
 
-                var emails = [];
+                var items = [];
 
                 for (var index = 0; index <= 30; index++) {
-                    emails.push({
+                    items.push({
                         id: index,
                         from: "recipient" + index,
                         recipient: "recipient" + index,
@@ -60522,18 +60522,18 @@ var ApiEmails = function () {
                 }
 
                 setTimeout(function () {
-                    resolve(emails);
+                    resolve(items);
                 }, timeout);
             });
         }
     }]);
 
-    return ApiEmails;
+    return ApiItems;
 }();
 
-exports.default = ApiEmails;
+exports.default = ApiItems;
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\PhotoAlbum\\src\\api\\emails.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\PhotoAlbum\\src\\api\\emails.js"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\PhotoAlbum\\src\\api\\items.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\PhotoAlbum\\src\\api\\items.js"); } } })();
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
@@ -60649,7 +60649,7 @@ var AppToolbar = function (_React$Component) {
                 ),
                 _react2.default.createElement(
                     _reactRouter.Link,
-                    { to: '/PhotoAlbum/email-edit' },
+                    { to: '/PhotoAlbum/edit' },
                     'Create Email ',
                     _react2.default.createElement(_reactBootstrap.Glyphicon, { glyph: 'plus-sign' })
                 )
@@ -60695,16 +60695,16 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var EmailEditField = function (_React$Component) {
-    _inherits(EmailEditField, _React$Component);
+var EditField = function (_React$Component) {
+    _inherits(EditField, _React$Component);
 
-    function EmailEditField(props) {
-        _classCallCheck(this, EmailEditField);
+    function EditField(props) {
+        _classCallCheck(this, EditField);
 
-        return _possibleConstructorReturn(this, (EmailEditField.__proto__ || Object.getPrototypeOf(EmailEditField)).call(this, props));
+        return _possibleConstructorReturn(this, (EditField.__proto__ || Object.getPrototypeOf(EditField)).call(this, props));
     }
 
-    _createClass(EmailEditField, [{
+    _createClass(EditField, [{
         key: 'render',
         value: function render() {
             return _react2.default.createElement(
@@ -60745,12 +60745,12 @@ var EmailEditField = function (_React$Component) {
         }
     }]);
 
-    return EmailEditField;
+    return EditField;
 }(_react2.default.Component);
 
-exports.default = EmailEditField;
+exports.default = EditField;
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\PhotoAlbum\\src\\components\\EmailEditField.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\PhotoAlbum\\src\\components\\EmailEditField.js"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\PhotoAlbum\\src\\components\\EditField.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\PhotoAlbum\\src\\components\\EditField.js"); } } })();
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
@@ -60763,7 +60763,7 @@ exports.default = EmailEditField;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.EmailList = undefined;
+exports.List = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -60775,13 +60775,13 @@ var _reactRedux = __webpack_require__(56);
 
 var _reactBootstrap = __webpack_require__(107);
 
-var _EmailListItem = __webpack_require__(1077);
+var _ListItem = __webpack_require__(1077);
 
-var _EmailListItem2 = _interopRequireDefault(_EmailListItem);
+var _ListItem2 = _interopRequireDefault(_ListItem);
 
-var _EmailListDelete = __webpack_require__(1076);
+var _ListDelete = __webpack_require__(1076);
 
-var _EmailListDelete2 = _interopRequireDefault(_EmailListDelete);
+var _ListDelete2 = _interopRequireDefault(_ListDelete);
 
 var _reactRouterRedux = __webpack_require__(185);
 
@@ -60793,17 +60793,17 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var EmailList = exports.EmailList = function (_React$Component) {
-    _inherits(EmailList, _React$Component);
+var List = exports.List = function (_React$Component) {
+    _inherits(List, _React$Component);
 
-    function EmailList(props) {
-        _classCallCheck(this, EmailList);
+    function List(props) {
+        _classCallCheck(this, List);
 
-        var _this = _possibleConstructorReturn(this, (EmailList.__proto__ || Object.getPrototypeOf(EmailList)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (List.__proto__ || Object.getPrototypeOf(List)).call(this, props));
 
-        if (!_this.props.emails.length) {
+        if (!_this.props.items.length) {
             _this.props.dispatch({
-                type: 'EMAILS_FETCH_LIST'
+                type: 'ITEM_FETCH_LIST'
             });
         }
 
@@ -60811,20 +60811,20 @@ var EmailList = exports.EmailList = function (_React$Component) {
         return _this;
     }
 
-    _createClass(EmailList, [{
+    _createClass(List, [{
         key: 'render',
         value: function render() {
 
             var per_page = 5;
-            var pages = Math.ceil(this.props.emails.length / per_page);
+            var pages = Math.ceil(this.props.items.length / per_page);
             var current_page = this.props.page;
             var start_offset = (current_page - 1) * per_page;
             var start_count = 0;
 
-            return this.props.emails.length ? _react2.default.createElement(
+            return this.props.items.length ? _react2.default.createElement(
                 'div',
                 null,
-                _react2.default.createElement(_EmailListDelete2.default, null),
+                _react2.default.createElement(_ListDelete2.default, null),
                 _react2.default.createElement(
                     _reactBootstrap.Table,
                     { bordered: true, hover: true, responsive: true, striped: true },
@@ -60866,10 +60866,10 @@ var EmailList = exports.EmailList = function (_React$Component) {
                     _react2.default.createElement(
                         'tbody',
                         null,
-                        this.props.emails.map(function (email, index) {
+                        this.props.items.map(function (email, index) {
                             if (index >= start_offset && start_count < per_page) {
                                 start_count++;
-                                return _react2.default.createElement(_EmailListItem2.default, { key: email.id, item: email });
+                                return _react2.default.createElement(_ListItem2.default, { key: email.id, item: email });
                             }
                         })
                     )
@@ -60885,23 +60885,23 @@ var EmailList = exports.EmailList = function (_React$Component) {
     }, {
         key: 'changePage',
         value: function changePage(page) {
-            this.props.dispatch((0, _reactRouterRedux.push)('/?page=' + page));
+            this.props.dispatch((0, _reactRouterRedux.push)('/PhotoAlbum/?page=' + page));
         }
     }]);
 
-    return EmailList;
+    return List;
 }(_react2.default.Component);
 
 function mapStateToProps(state) {
     return {
-        emails: state.emails.list || [],
+        items: state.items.list || [],
         page: Number(state.routing.locationBeforeTransitions.query.page) || 1
     };
 }
 
-exports.default = (0, _reactRedux.connect)(mapStateToProps)(EmailList);
+exports.default = (0, _reactRedux.connect)(mapStateToProps)(List);
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\PhotoAlbum\\src\\components\\EmailList.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\PhotoAlbum\\src\\components\\EmailList.js"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\PhotoAlbum\\src\\components\\List.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\PhotoAlbum\\src\\components\\List.js"); } } })();
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
@@ -60914,7 +60914,7 @@ exports.default = (0, _reactRedux.connect)(mapStateToProps)(EmailList);
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.EmailListDelete = undefined;
+exports.ListDelete = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -60934,20 +60934,20 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var EmailListDelete = exports.EmailListDelete = function (_React$Component) {
-    _inherits(EmailListDelete, _React$Component);
+var ListDelete = exports.ListDelete = function (_React$Component) {
+    _inherits(ListDelete, _React$Component);
 
-    function EmailListDelete(props) {
-        _classCallCheck(this, EmailListDelete);
+    function ListDelete(props) {
+        _classCallCheck(this, ListDelete);
 
-        var _this = _possibleConstructorReturn(this, (EmailListDelete.__proto__ || Object.getPrototypeOf(EmailListDelete)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (ListDelete.__proto__ || Object.getPrototypeOf(ListDelete)).call(this, props));
 
         _this.modalHide = _this.modalHide.bind(_this);
         _this.emailDelete = _this.emailDelete.bind(_this);
         return _this;
     }
 
-    _createClass(EmailListDelete, [{
+    _createClass(ListDelete, [{
         key: 'render',
         value: function render() {
             return _react2.default.createElement(
@@ -60988,30 +60988,30 @@ var EmailListDelete = exports.EmailListDelete = function (_React$Component) {
         key: 'emailDelete',
         value: function emailDelete(event) {
             this.props.dispatch({
-                type: "EMAIL_DELETE",
+                type: "ITEM_DELETE",
                 id: this.props.modal_delete.id
             });
             this.props.dispatch({
-                type: "EMAIL_DELETE_MODAL_HIDE"
+                type: "ITEM_DELETE_MODAL_HIDE"
             });
         }
     }, {
         key: 'modalHide',
         value: function modalHide(event) {
             this.props.dispatch({
-                type: "EMAIL_DELETE_MODAL_HIDE"
+                type: "ITEM_DELETE_MODAL_HIDE"
             });
         }
     }]);
 
-    return EmailListDelete;
+    return ListDelete;
 }(_react2.default.Component);
 
 function mapStateToProps(state) {
     var modal_delete = void 0;
 
-    if (state.emails.modal && state.emails.modal.EMAIL_DELETE) {
-        modal_delete = state.emails.modal.EMAIL_DELETE;
+    if (state.items.modal && state.items.modal.ITEM_DELETE) {
+        modal_delete = state.items.modal.ITEM_DELETE;
     } else {
         modal_delete = {
             show: false,
@@ -61024,9 +61024,9 @@ function mapStateToProps(state) {
     };
 }
 
-exports.default = (0, _reactRedux.connect)(mapStateToProps)(EmailListDelete);
+exports.default = (0, _reactRedux.connect)(mapStateToProps)(ListDelete);
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\PhotoAlbum\\src\\components\\EmailListDelete.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\PhotoAlbum\\src\\components\\EmailListDelete.js"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\PhotoAlbum\\src\\components\\ListDelete.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\PhotoAlbum\\src\\components\\ListDelete.js"); } } })();
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
@@ -61039,7 +61039,7 @@ exports.default = (0, _reactRedux.connect)(mapStateToProps)(EmailListDelete);
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.EmailListItem = undefined;
+exports.ListItem = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -61061,19 +61061,19 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var EmailListItem = exports.EmailListItem = function (_React$Component) {
-    _inherits(EmailListItem, _React$Component);
+var ListItem = exports.ListItem = function (_React$Component) {
+    _inherits(ListItem, _React$Component);
 
-    function EmailListItem(props) {
-        _classCallCheck(this, EmailListItem);
+    function ListItem(props) {
+        _classCallCheck(this, ListItem);
 
-        var _this = _possibleConstructorReturn(this, (EmailListItem.__proto__ || Object.getPrototypeOf(EmailListItem)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (ListItem.__proto__ || Object.getPrototypeOf(ListItem)).call(this, props));
 
         _this.modalDeleteShow = _this.modalDeleteShow.bind(_this);
         return _this;
     }
 
-    _createClass(EmailListItem, [{
+    _createClass(ListItem, [{
         key: 'render',
         value: function render() {
             var item = this.props.item;
@@ -61110,7 +61110,7 @@ var EmailListItem = exports.EmailListItem = function (_React$Component) {
                     null,
                     _react2.default.createElement(
                         _reactRouter.Link,
-                        { to: '/email-edit/' + item.id },
+                        { to: '/PhotoAlbum/edit/' + item.id },
                         _react2.default.createElement(
                             _reactBootstrap.Button,
                             { bsSize: 'xsmall' },
@@ -61147,23 +61147,23 @@ var EmailListItem = exports.EmailListItem = function (_React$Component) {
             var itemName = event.target.dataset.itemname;
 
             this.props.dispatch({
-                type: "EMAIL_DELETE_MODAL_SHOW",
+                type: "ITEM_DELETE_MODAL_SHOW",
                 id: emailId,
                 name: itemName
             });
         }
     }]);
 
-    return EmailListItem;
+    return ListItem;
 }(_react2.default.Component);
 
-EmailListItem.propTypes = {
+ListItem.propTypes = {
     item: _react2.default.PropTypes.object.isRequired
 };
 
-exports.default = (0, _reactRedux.connect)()(EmailListItem);
+exports.default = (0, _reactRedux.connect)()(ListItem);
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\PhotoAlbum\\src\\components\\EmailListItem.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\PhotoAlbum\\src\\components\\EmailListItem.js"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\PhotoAlbum\\src\\components\\ListItem.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\PhotoAlbum\\src\\components\\ListItem.js"); } } })();
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
@@ -61176,7 +61176,7 @@ exports.default = (0, _reactRedux.connect)()(EmailListItem);
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.EmailEdit = undefined;
+exports.Edit = undefined;
 
 var _find2 = __webpack_require__(914);
 
@@ -61196,9 +61196,9 @@ var _reactRedux = __webpack_require__(56);
 
 var _reactRouterRedux = __webpack_require__(185);
 
-var _EmailEditField = __webpack_require__(1074);
+var _EditField = __webpack_require__(1074);
 
-var _EmailEditField2 = _interopRequireDefault(_EmailEditField);
+var _EditField2 = _interopRequireDefault(_EditField);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -61208,20 +61208,20 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var EmailEdit = exports.EmailEdit = function (_React$Component) {
-    _inherits(EmailEdit, _React$Component);
+var Edit = exports.Edit = function (_React$Component) {
+    _inherits(Edit, _React$Component);
 
-    function EmailEdit(props) {
-        _classCallCheck(this, EmailEdit);
+    function Edit(props) {
+        _classCallCheck(this, Edit);
 
-        var _this = _possibleConstructorReturn(this, (EmailEdit.__proto__ || Object.getPrototypeOf(EmailEdit)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (Edit.__proto__ || Object.getPrototypeOf(Edit)).call(this, props));
 
         _this.form_type = props.initialValues.id > 0 ? 'edit' : 'add';
         _this.submit = _this.submit.bind(_this);
         return _this;
     }
 
-    _createClass(EmailEdit, [{
+    _createClass(Edit, [{
         key: 'render',
         value: function render() {
 
@@ -61238,13 +61238,13 @@ var EmailEdit = exports.EmailEdit = function (_React$Component) {
                         null,
                         isEditMode ? 'Edit' : 'Create'
                     ),
-                    ' Email'
+                    ' Photo'
                 ),
                 _react2.default.createElement(
                     _reactBootstrap.Form,
                     { onSubmit: this.props.handleSubmit(this.submit), horizontal: true },
-                    _react2.default.createElement(_reduxForm.Field, { glyph: 'user', name: 'recipient', label: 'Recipient', component: _EmailEditField2.default }),
-                    _react2.default.createElement(_reduxForm.Field, { glyph: 'pencil', name: 'subject', label: 'Subject', component: _EmailEditField2.default }),
+                    _react2.default.createElement(_reduxForm.Field, { glyph: 'user', name: 'recipient', label: 'Recipient', component: _EditField2.default }),
+                    _react2.default.createElement(_reduxForm.Field, { glyph: 'pencil', name: 'subject', label: 'Subject', component: _EditField2.default }),
                     _react2.default.createElement(
                         _reactBootstrap.FormGroup,
                         null,
@@ -61272,7 +61272,7 @@ var EmailEdit = exports.EmailEdit = function (_React$Component) {
         key: 'submit',
         value: function submit(values) {
             this.props.dispatch({
-                type: "EMAILS_" + this.form_type.toUpperCase(),
+                type: "ITEM_" + this.form_type.toUpperCase(),
                 id: values.id,
                 recipient: values.recipient,
                 subject: values.subject
@@ -61282,10 +61282,10 @@ var EmailEdit = exports.EmailEdit = function (_React$Component) {
         }
     }]);
 
-    return EmailEdit;
+    return Edit;
 }(_react2.default.Component);
 
-var EmailEditForm = (0, _reduxForm.reduxForm)({
+var EditForm = (0, _reduxForm.reduxForm)({
     form: 'email_edit',
     validate: function validate(values) {
         var errors = {};
@@ -61294,11 +61294,11 @@ var EmailEditForm = (0, _reduxForm.reduxForm)({
         }
         return errors;
     }
-})(EmailEdit);
+})(Edit);
 
 function mapEditStateToProps(state, own_props) {
 
-    var form_data = (0, _find3.default)(state.emails.list, { id: Number(own_props.params.id) }) || {
+    var form_data = (0, _find3.default)(state.items.list, { id: Number(own_props.params.id) }) || {
         id: 0,
         recipient: '',
         subject: ''
@@ -61309,9 +61309,9 @@ function mapEditStateToProps(state, own_props) {
     };
 }
 
-exports.default = (0, _reactRedux.connect)(mapEditStateToProps)(EmailEditForm);
+exports.default = (0, _reactRedux.connect)(mapEditStateToProps)(EditForm);
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\PhotoAlbum\\src\\pages\\EmailEdit.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\PhotoAlbum\\src\\pages\\EmailEdit.js"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\PhotoAlbum\\src\\pages\\Edit.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\PhotoAlbum\\src\\pages\\Edit.js"); } } })();
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
@@ -61331,9 +61331,9 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _EmailList = __webpack_require__(1075);
+var _List = __webpack_require__(1075);
 
-var _EmailList2 = _interopRequireDefault(_EmailList);
+var _List2 = _interopRequireDefault(_List);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -61358,7 +61358,7 @@ var Home = function (_React$Component) {
             return _react2.default.createElement(
                 'div',
                 { className: 'container' },
-                _react2.default.createElement(_EmailList2.default, null)
+                _react2.default.createElement(_List2.default, null)
             );
         }
     }]);
@@ -61438,6 +61438,39 @@ exports.default = NotFound;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+exports.reducers = undefined;
+
+var _redux = __webpack_require__(138);
+
+var _items = __webpack_require__(1082);
+
+var _items2 = _interopRequireDefault(_items);
+
+var _reactRouterRedux = __webpack_require__(185);
+
+var _reduxForm = __webpack_require__(459);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var reducers = exports.reducers = (0, _redux.combineReducers)({
+    routing: _reactRouterRedux.routerReducer,
+    form: _reduxForm.reducer,
+    items: _items2.default
+});
+
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\PhotoAlbum\\src\\reducers\\index.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\PhotoAlbum\\src\\reducers\\index.js"); } } })();
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 1082 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 
 var _uniqueId2 = __webpack_require__(928);
 
@@ -61447,43 +61480,43 @@ var _remove2 = __webpack_require__(922);
 
 var _remove3 = _interopRequireDefault(_remove2);
 
-exports.default = emails;
+exports.default = items;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function emails() {
+function items() {
     var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
     var action = arguments[1];
 
     var new_state = JSON.parse(JSON.stringify(state));
 
     switch (action.type) {
-        case "EMAIL_DELETE_MODAL_SHOW":
+        case "ITEM_DELETE_MODAL_SHOW":
             new_state.modal = new_state.modal || {};
-            new_state.modal.EMAIL_DELETE = {
+            new_state.modal.ITEM_DELETE = {
                 show: true,
                 id: action.id,
                 name: action.name
             };
             return new_state;
-        case "EMAIL_DELETE_MODAL_HIDE":
-            new_state.modal.EMAIL_DELETE = {
+        case "ITEM_DELETE_MODAL_HIDE":
+            new_state.modal.ITEM_DELETE = {
                 show: false,
                 id: 0,
                 name: ""
             };
             return new_state;
-        case "EMAIL_DELETE":
+        case "ITEM_DELETE":
             (0, _remove3.default)(new_state.list, function (item) {
                 return item.id === action.id;
             });
             return new_state;
 
-        case "EMAILS_FETCH_LIST_SUCCESS":
-            new_state.list = action.emails;
+        case "ITEM_FETCH_LIST_SUCCESS":
+            new_state.list = action.items;
             return new_state;
 
-        case "EMAILS_ADD":
+        case "ITEM_ADD":
             new_state.list.push({
                 from: "Loren",
                 bundle: "Inbox",
@@ -61494,7 +61527,7 @@ function emails() {
             });
             return new_state;
 
-        case "EMAILS_EDIT":
+        case "ITEM_EDIT":
             var _iteratorNormalCompletion = true;
             var _didIteratorError = false;
             var _iteratorError = undefined;
@@ -61536,94 +61569,11 @@ function emails() {
     }
 }
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\PhotoAlbum\\src\\reducers\\emails.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\PhotoAlbum\\src\\reducers\\emails.js"); } } })();
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
-
-/***/ }),
-/* 1082 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.reducers = undefined;
-
-var _redux = __webpack_require__(138);
-
-var _emails = __webpack_require__(1081);
-
-var _emails2 = _interopRequireDefault(_emails);
-
-var _reactRouterRedux = __webpack_require__(185);
-
-var _reduxForm = __webpack_require__(459);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var reducers = exports.reducers = (0, _redux.combineReducers)({
-    routing: _reactRouterRedux.routerReducer,
-    form: _reduxForm.reducer,
-    emails: _emails2.default
-});
-
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\PhotoAlbum\\src\\reducers\\index.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\PhotoAlbum\\src\\reducers\\index.js"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\PhotoAlbum\\src\\reducers\\items.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\PhotoAlbum\\src\\reducers\\items.js"); } } })();
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
 /* 1083 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.emailsFetchList = emailsFetchList;
-
-var _effects = __webpack_require__(299);
-
-var _emails = __webpack_require__(1071);
-
-var _emails2 = _interopRequireDefault(_emails);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var _marked = [emailsFetchList].map(regeneratorRuntime.mark);
-
-function emailsFetchList(action) {
-    var emails;
-    return regeneratorRuntime.wrap(function emailsFetchList$(_context) {
-        while (1) {
-            switch (_context.prev = _context.next) {
-                case 0:
-                    _context.next = 2;
-                    return (0, _effects.call)(_emails2.default.getList);
-
-                case 2:
-                    emails = _context.sent;
-                    _context.next = 5;
-                    return (0, _effects.put)({
-                        type: 'EMAILS_FETCH_LIST_SUCCESS',
-                        emails: emails
-                    });
-
-                case 5:
-                case 'end':
-                    return _context.stop();
-            }
-        }
-    }, _marked[0], this);
-}
-
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\PhotoAlbum\\src\\sagas\\emails.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\PhotoAlbum\\src\\sagas\\emails.js"); } } })();
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
-
-/***/ }),
-/* 1084 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61638,7 +61588,7 @@ var _reduxSaga = __webpack_require__(462);
 
 var _effects = __webpack_require__(299);
 
-var _emails = __webpack_require__(1083);
+var _items = __webpack_require__(1084);
 
 var _marked = [sagas].map(regeneratorRuntime.mark);
 
@@ -61649,7 +61599,7 @@ function sagas() {
             switch (_context.prev = _context.next) {
                 case 0:
                     _context.next = 2;
-                    return [(0, _effects.fork)(_reduxSaga.takeLatest, 'EMAILS_FETCH_LIST', _emails.emailsFetchList)];
+                    return [(0, _effects.fork)(_reduxSaga.takeLatest, 'ITEM_FETCH_LIST', _items.itemsFetchList)];
 
                 case 2:
                 case 'end':
@@ -61660,6 +61610,56 @@ function sagas() {
 }
 
  ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\PhotoAlbum\\src\\sagas\\index.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\PhotoAlbum\\src\\sagas\\index.js"); } } })();
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 1084 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.itemsFetchList = itemsFetchList;
+
+var _effects = __webpack_require__(299);
+
+var _items = __webpack_require__(1071);
+
+var _items2 = _interopRequireDefault(_items);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var _marked = [itemsFetchList].map(regeneratorRuntime.mark);
+
+function itemsFetchList(action) {
+    var items;
+    return regeneratorRuntime.wrap(function itemsFetchList$(_context) {
+        while (1) {
+            switch (_context.prev = _context.next) {
+                case 0:
+                    _context.next = 2;
+                    return (0, _effects.call)(_items2.default.getList);
+
+                case 2:
+                    items = _context.sent;
+                    _context.next = 5;
+                    return (0, _effects.put)({
+                        type: 'ITEM_FETCH_LIST_SUCCESS',
+                        items: items
+                    });
+
+                case 5:
+                case 'end':
+                    return _context.stop();
+            }
+        }
+    }, _marked[0], this);
+}
+
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\PhotoAlbum\\src\\sagas\\items.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\PhotoAlbum\\src\\sagas\\items.js"); } } })();
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),

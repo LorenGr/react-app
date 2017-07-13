@@ -2,19 +2,19 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Table, Pagination, ProgressBar} from 'react-bootstrap';
 
-import EmailListItem from './EmailListItem';
-import EmailListDelete from './EmailListDelete';
+import ListItem from './ListItem';
+import ListDelete from './ListDelete';
 
 import {push} from 'react-router-redux';
 
-export class EmailList extends React.Component {
+export class List extends React.Component {
 
     constructor(props) {
         super(props);
 
-        if (!this.props.emails.length) {
+        if (!this.props.items.length) {
             this.props.dispatch({
-                type: 'EMAILS_FETCH_LIST'
+                type: 'ITEM_FETCH_LIST'
             });
         }
 
@@ -24,14 +24,14 @@ export class EmailList extends React.Component {
     render() {
 
         const per_page = 5;
-        const pages = Math.ceil(this.props.emails.length / per_page);
+        const pages = Math.ceil(this.props.items.length / per_page);
         const current_page = this.props.page;
         const start_offset = (current_page - 1) * per_page;
         let start_count = 0;
 
-        return this.props.emails.length ? (
+        return this.props.items.length ? (
             <div>
-                <EmailListDelete/>
+                <ListDelete/>
                 <Table bordered hover responsive striped>
                     <thead>
                     <tr>
@@ -45,11 +45,11 @@ export class EmailList extends React.Component {
                     </tr>
                     </thead>
                     <tbody>
-                    {this.props.emails.map((email, index) => {
+                    {this.props.items.map((email, index) => {
                         if (index >= start_offset && start_count < per_page) {
                             start_count++;
                             return (
-                                <EmailListItem key={email.id} item={email}/>
+                                <ListItem key={email.id} item={email}/>
                             )
                         }
                     })}
@@ -68,16 +68,16 @@ export class EmailList extends React.Component {
     }
 
     changePage(page) {
-        this.props.dispatch(push('/?page=' + page));
+        this.props.dispatch(push('/PhotoAlbum/?page=' + page));
     }
 }
 
 function mapStateToProps(state) {
     return ({
-        emails: state.emails.list || [],
+        items: state.items.list || [],
         page: Number(state.routing.locationBeforeTransitions.query.page) || 1
     });
 }
 
 
-export default connect(mapStateToProps)(EmailList);
+export default connect(mapStateToProps)(List);

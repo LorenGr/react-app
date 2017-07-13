@@ -1,5 +1,5 @@
 import assert from 'assert';
-import emails from '../../src/reducers/emails';
+import items from '../../src/reducers/items';
 
 describe("Emails Reducer", () => {
     describe("Add Item", () => {
@@ -18,7 +18,7 @@ describe("Emails Reducer", () => {
                 ]
             };
             const action = {
-                type: "EMAILS_ADD",
+                type: "ITEM_ADD",
                 date: "15012008",
                 id: 2,
                 recipient: "School",
@@ -46,7 +46,7 @@ describe("Emails Reducer", () => {
                 ]
             };
 
-            assert.deepEqual(emails(state, action), expected);
+            assert.deepEqual(items(state, action), expected);
         });
     });
 
@@ -72,7 +72,7 @@ describe("Emails Reducer", () => {
                 ]
             };
             const action = {
-                type: "EMAILS_EDIT",
+                type: "ITEM_EDIT",
                 date: "15012008",
                 id: 2,
                 recipient: "Students",
@@ -100,7 +100,7 @@ describe("Emails Reducer", () => {
                 ]
             };
 
-            assert.deepEqual(emails(state, action), expected);
+            assert.deepEqual(items(state, action), expected);
         });
     });
 
@@ -108,26 +108,26 @@ describe("Emails Reducer", () => {
         it("should set modal delete data when undefined", () => {
             const state = {};
             const action = {
-                type: "EMAIL_DELETE_MODAL_SHOW",
+                type: "ITEM_DELETE_MODAL_SHOW",
                 id: 2,
                 name: "Loren"
             };
             const expected = {
                 modal: {
-                    EMAIL_DELETE: {
+                    ITEM_DELETE: {
                         show: true,
                         id: 2,
                         name: "Loren"
                     }
                 }
             };
-            assert.deepEqual(emails(state, action), expected);
+            assert.deepEqual(items(state, action), expected);
 
         });
         it("should set modal delete data when defined", () => {
             const state = {
                 modal: {
-                    EMAIL_DELETE: {
+                    ITEM_DELETE: {
                         show: false,
                         id: 0,
                         name: ''
@@ -135,20 +135,20 @@ describe("Emails Reducer", () => {
                 }
             };
             const action = {
-                type: "EMAIL_DELETE_MODAL_SHOW",
+                type: "ITEM_DELETE_MODAL_SHOW",
                 id: 2,
                 name: "Loren"
             };
             const expected = {
                 modal: {
-                    EMAIL_DELETE: {
+                    ITEM_DELETE: {
                         show: true,
                         id: 2,
                         name: "Loren"
                     }
                 }
             };
-            assert.deepEqual(emails(state, action), expected);
+            assert.deepEqual(items(state, action), expected);
         });
     });
 });

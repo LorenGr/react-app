@@ -1,36 +1,36 @@
 import _ from 'lodash';
 import {remove, uniqueId} from 'lodash';
 
-export default function emails(state = {}, action) {
+export default function items(state = {}, action) {
     let new_state = JSON.parse(JSON.stringify(state));
 
     switch (action.type) {
-        case "EMAIL_DELETE_MODAL_SHOW" :
+        case "ITEM_DELETE_MODAL_SHOW" :
             new_state.modal = new_state.modal || {};
-            new_state.modal.EMAIL_DELETE = {
+            new_state.modal.ITEM_DELETE = {
                 show: true,
                 id: action.id,
                 name: action.name
             };
             return new_state;
-        case "EMAIL_DELETE_MODAL_HIDE" :
-            new_state.modal.EMAIL_DELETE = {
+        case "ITEM_DELETE_MODAL_HIDE" :
+            new_state.modal.ITEM_DELETE = {
                 show: false,
                 id: 0,
                 name: ""
             };
             return new_state;
-        case "EMAIL_DELETE" :
+        case "ITEM_DELETE" :
             _.remove(new_state.list,
                 item => item.id === action.id
             );
             return new_state;
 
-        case "EMAILS_FETCH_LIST_SUCCESS" :
-            new_state.list = action.emails;
+        case "ITEM_FETCH_LIST_SUCCESS" :
+            new_state.list = action.items;
             return new_state;
 
-        case "EMAILS_ADD" :
+        case "ITEM_ADD" :
             new_state.list.push({
                 from: "Loren",
                 bundle: "Inbox",
@@ -41,7 +41,7 @@ export default function emails(state = {}, action) {
             });
             return new_state;
 
-        case "EMAILS_EDIT" :
+        case "ITEM_EDIT" :
             for (const email of new_state.list) {
                 if (email.id === action.id) {
                     Object.assign(email, {

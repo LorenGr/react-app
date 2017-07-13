@@ -2,9 +2,9 @@ import React from 'react';
 import {shallow} from 'enzyme';
 import assert from 'assert';
 
-import {EmailListDelete} from '../../src/components/EmailListDelete';
+import {ListDelete} from '../../src/components/ListDelete';
 
-describe("EmailListDelete component", () => {
+describe("ListDelete component", () => {
     describe("render", () => {
         it("should render component", () => {
 
@@ -17,7 +17,7 @@ describe("EmailListDelete component", () => {
                 }
             };
 
-            const wrapper = shallow(<EmailListDelete {...props} />);
+            const wrapper = shallow(<ListDelete {...props} />);
             assert.equal(wrapper.find('Modal').length, 1);
             assert.equal(wrapper.find('Button').length, 2);
         });

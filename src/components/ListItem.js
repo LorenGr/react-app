@@ -3,7 +3,7 @@ import {Button, Glyphicon} from 'react-bootstrap';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
 
-export class EmailListItem extends React.Component {
+export class ListItem extends React.Component {
 
     constructor(props) {
         super(props);
@@ -21,7 +21,7 @@ export class EmailListItem extends React.Component {
                 <td>{this.dateToString(item.date)}</td>
                 <td>{item.bundle}</td>
                 <td>
-                    <Link to={'/email-edit/' + item.id}>
+                    <Link to={'/PhotoAlbum/edit/' + item.id}>
                         <Button bsSize="xsmall">
                             Edit <Glyphicon glyph="edit"/>
                         </Button>
@@ -49,14 +49,14 @@ export class EmailListItem extends React.Component {
         const itemName = event.target.dataset.itemname;
 
         this.props.dispatch({
-            type: "EMAIL_DELETE_MODAL_SHOW",
+            type: "ITEM_DELETE_MODAL_SHOW",
             id: emailId,
             name: itemName
         });
     }
 }
-EmailListItem.propTypes = {
+ListItem.propTypes = {
     item: React.PropTypes.object.isRequired
 };
 
-export default connect()(EmailListItem);
+export default connect()(ListItem);
