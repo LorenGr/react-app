@@ -30,8 +30,9 @@ const render = Component => {
         <AppContainer>
             <Provider store={store}>
                 <Router history={history}>
-                    <Route path="/PhotoAlbum" component={App}>
+                    <Route path="PhotoAlbum" component={App}>
                         <IndexRoute component={Home}/>
+                        <Route path="home" component={Home}/>
                         <Route path="email-edit(/:id)" component={EmailEdit}/>
                         <Route path="*" component={NotFound}/>
                     </Route>
