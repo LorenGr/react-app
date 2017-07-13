@@ -13,9 +13,9 @@ npm start
 ```
 
 ## Source Code
-- [Project Files] (src/)
-- [Tests] (test/)
-- [Deployment Files] (public/)
+- [Project Files](src/)
+- [Tests](test/)
+- [Deployment Files](public/)
 
 ## Libraries and Architecture
 The application was created with React and is being served and compiled with webpack.
