@@ -1,4 +1,4 @@
-# PhotoAlbum App
+# PhotoAlbum App [![Build Status](https://travis-ci.org/LorenGr/PhotoAlbum.svg?branch=master)](https://travis-ci.org/LorenGr/PhotoAlbum)
 
 This is a photography album web application. The album showcases photos from various photographers inside a masonry layout, it also allows viewing of each photo, deletion and addition of new ones.
 Filtering by tags and photographer is also possible within the gallery page.
