@@ -29570,7 +29570,6 @@ var render = function render(Component) {
                     _reactRouter.Route,
                     { path: 'PhotoAlbum', component: _App2.default },
                     _react2.default.createElement(_reactRouter.IndexRoute, { component: _Home2.default }),
-                    _react2.default.createElement(_reactRouter.Route, { path: 'home', component: _Home2.default }),
                     _react2.default.createElement(_reactRouter.Route, { path: 'email-edit(/:id)', component: _EmailEdit2.default }),
                     _react2.default.createElement(_reactRouter.Route, { path: '*', component: _NotFound2.default })
                 )
@@ -60645,7 +60644,7 @@ var AppToolbar = function (_React$Component) {
                 { className: 'AppToolbarContainer' },
                 _react2.default.createElement(
                     _reactRouter.Link,
-                    { to: '/PhotoAlbum/home' },
+                    { to: '/PhotoAlbum' },
                     'Home '
                 ),
                 _react2.default.createElement(
