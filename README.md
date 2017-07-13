@@ -7,9 +7,22 @@ Viewed photos offer information such as a description, location (linking to that
 ## Demo
 https://lorengr.github.io/PhotoAlbum
 
+### Initialisation
+``` javascript
+npm start
+```
+
+## Source Code
+- [Project Files] (src/)
+- [Tests] (test/)
+- [Deployment Files] (public/)
+
 ## Libraries and Architecture
 The application was created with React and is being served and compiled with webpack.
 Communication between elements and state management is all being handled by a Redux architecture.
+
+## Tests
+All pages, reducers and sagas have been unit tested and components were tested with Enzyme.
 
 ### About the Author
 My name is Loren Grixti, I am a Front-End developer coming from the island of Malta, currently living in Montreal, Canada.
