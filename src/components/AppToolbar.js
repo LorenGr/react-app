@@ -1,12 +1,12 @@
 import React from 'react';
-import {Nav, NavItem, Glyphicon} from 'react-bootstrap';
+import {Glyphicon} from 'react-bootstrap';
 import {Link} from 'react-router';
 
 export default class AppToolbar extends React.Component {
     render() {
         return (
             <div className="AppToolbarContainer">
-                <Link to="home">Home </Link>
+                <Link to="./home">Home </Link>
                 <Link to="email-edit">
                     Create Email <Glyphicon glyph="plus-sign"/>
                 </Link>
