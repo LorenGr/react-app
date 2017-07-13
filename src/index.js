@@ -31,7 +31,7 @@ const render = Component => {
             <Provider store={store}>
                 <Router history={history}>
                     <Route path="/" component={App}>
-                        <Route path="home" component={Home}/>
+                        <IndexRoute component={Home}/>
                         <Route path="email-edit(/:id)" component={EmailEdit}/>
                         <Route path="*" component={NotFound}/>
                     </Route>
