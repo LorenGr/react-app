@@ -29,6 +29,7 @@ export class List extends React.Component {
         const start_offset = (current_page - 1) * per_page;
         let start_count = 0;
 
+
         return this.props.items.length ? (
             <div>
                 <ListDelete/>
