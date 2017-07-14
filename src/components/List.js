@@ -35,7 +35,7 @@ export class List extends React.Component {
                 <Table bordered hover responsive striped>
                     <thead>
                     <tr>
-                        <th>From</th>
+                        <th>From </th>
                         <th>To</th>
                         <th>Subject</th>
                         <th>Date</th>
