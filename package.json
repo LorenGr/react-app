@@ -1,5 +1,5 @@
 {
-  "name": "react-dashboard",
+  "name": "PhotoAlbum",
   "version": "1.0.0",
   "description": "Personal Project",
   "main": "index.js",
@@ -60,12 +60,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LorenGr/react-dashboard.git"
+    "url": "git+https://github.com/LorenGr/PhotoAlbum.git"
   },
   "author": "Loren Grixti",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/LorenGr/react-dashboard/issues"
+    "url": "https://github.com/LorenGr/PhotoAlbum/issues"
   },
-  "homepage": "https://github.com/LorenGr/react-dashboard#readme"
+  "homepage": "https://github.com/LorenGr/PhotoAlbum#readme"
 }
