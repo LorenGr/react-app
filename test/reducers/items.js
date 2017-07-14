@@ -104,6 +104,7 @@ describe("Emails Reducer", () => {
         });
     });
 
+
     describe("Modals", () => {
         it("should set modal delete data when undefined", () => {
             const state = {};
