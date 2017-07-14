@@ -6,8 +6,8 @@ export default class AppToolbar extends React.Component {
     render() {
         return (
             <div className="AppToolbarContainer">
-                <Link to="/PhotoAlbum">Home </Link>
-                <Link to="/PhotoAlbum/edit">
+                <Link to="/">Home </Link>
+                <Link to="/edit">
                     Create Email <Glyphicon glyph="plus-sign"/>
                 </Link>
             </div>

@@ -30,7 +30,7 @@ const render = Component => {
         <AppContainer>
             <Provider store={store}>
                 <Router history={history}>
-                    <Route path="PhotoAlbum" component={App}>
+                    <Route path="/" component={App}>
                         <IndexRoute component={Home}/>
                         <Route path="edit(/:id)" component={Edit}/>
                         <Route path="*" component={NotFound}/>

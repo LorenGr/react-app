@@ -21,7 +21,7 @@ export class ListItem extends React.Component {
                 <td>{this.dateToString(item.date)}</td>
                 <td>{item.bundle}</td>
                 <td>
-                    <Link to={'/PhotoAlbum/edit/' + item.id}>
+                    <Link to={'/edit/' + item.id}>
                         <Button bsSize="xsmall">
                             Edit <Glyphicon glyph="edit"/>
                         </Button>

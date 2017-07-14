@@ -29568,7 +29568,7 @@ var render = function render(Component) {
                 { history: history },
                 _react2.default.createElement(
                     _reactRouter.Route,
-                    { path: 'PhotoAlbum', component: _App2.default },
+                    { path: '/', component: _App2.default },
                     _react2.default.createElement(_reactRouter.IndexRoute, { component: _Home2.default }),
                     _react2.default.createElement(_reactRouter.Route, { path: 'edit(/:id)', component: _Edit2.default }),
                     _react2.default.createElement(_reactRouter.Route, { path: '*', component: _NotFound2.default })
@@ -60644,12 +60644,12 @@ var AppToolbar = function (_React$Component) {
                 { className: 'AppToolbarContainer' },
                 _react2.default.createElement(
                     _reactRouter.Link,
-                    { to: '/PhotoAlbum' },
+                    { to: '/' },
                     'Home '
                 ),
                 _react2.default.createElement(
                     _reactRouter.Link,
-                    { to: '/PhotoAlbum/edit' },
+                    { to: '/edit' },
                     'Create Email ',
                     _react2.default.createElement(_reactBootstrap.Glyphicon, { glyph: 'plus-sign' })
                 )
@@ -60885,7 +60885,7 @@ var List = exports.List = function (_React$Component) {
     }, {
         key: 'changePage',
         value: function changePage(page) {
-            this.props.dispatch((0, _reactRouterRedux.push)('/PhotoAlbum/?page=' + page));
+            this.props.dispatch((0, _reactRouterRedux.push)('/?page=' + page));
         }
     }]);
 
@@ -61110,7 +61110,7 @@ var ListItem = exports.ListItem = function (_React$Component) {
                     null,
                     _react2.default.createElement(
                         _reactRouter.Link,
-                        { to: '/PhotoAlbum/edit/' + item.id },
+                        { to: '/edit/' + item.id },
                         _react2.default.createElement(
                             _reactBootstrap.Button,
                             { bsSize: 'xsmall' },

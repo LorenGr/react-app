@@ -68,7 +68,7 @@ export class List extends React.Component {
     }
 
     changePage(page) {
-        this.props.dispatch(push('/PhotoAlbum/?page=' + page));
+        this.props.dispatch(push('/?page=' + page));
     }
 }
 
