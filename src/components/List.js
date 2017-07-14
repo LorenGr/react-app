@@ -38,7 +38,7 @@ export class List extends React.Component {
                         <th>Receiver</th>
                         <th>Subject</th>
                         <th>Date</th>
-                        <th>Bundle</th>
+                        <th>Bundle </th>
                         <th></th>
                         <th></th>
                     </tr>
