@@ -17,7 +17,6 @@ export class List extends React.Component {
                 type: 'ITEM_FETCH_LIST'
             });
         }
-
         this.changePage = this.changePage.bind(this);
     }
 

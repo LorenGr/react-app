@@ -60806,7 +60806,6 @@ var List = exports.List = function (_React$Component) {
                 type: 'ITEM_FETCH_LIST'
             });
         }
-
         _this.changePage = _this.changePage.bind(_this);
         return _this;
     }
