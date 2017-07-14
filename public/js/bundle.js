@@ -60837,7 +60837,7 @@ var List = exports.List = function (_React$Component) {
                             _react2.default.createElement(
                                 'th',
                                 null,
-                                'From'
+                                'From '
                             ),
                             _react2.default.createElement(
                                 'th',
