@@ -1,5 +1,5 @@
 {
-  "name": "PhotoAlbum",
+  "name": "dogwalkr",
   "version": "1.0.0",
   "description": "Personal Project",
   "main": "index.js",
@@ -62,12 +62,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LorenGr/PhotoAlbum.git"
+    "url": "git+https://github.com/LorenGr/dogwalkr.git"
   },
   "author": "Loren Grixti",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/LorenGr/PhotoAlbum/issues"
+    "url": "https://github.com/LorenGr/dogwalkr/issues"
   },
-  "homepage": "https://github.com/LorenGr/PhotoAlbum#readme"
+  "homepage": "https://github.com/LorenGr/dogwalkr#readme"
 }

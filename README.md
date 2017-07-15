@@ -1,11 +1,10 @@
-# PhotoAlbum App [![Build Status](https://travis-ci.org/LorenGr/PhotoAlbum.svg?branch=master)](https://travis-ci.org/LorenGr/PhotoAlbum)
+# dogwalkr App [![Build Status](https://travis-ci.org/LorenGr/dogwalkr.svg?branch=master)](https://travis-ci.org/LorenGr/dogwalkr)
 
-This is a photography album web application. The album showcases photos from various photographers inside a masonry layout, it also allows viewing of each photo, deletion and addition of new ones.
-Filtering by tags and photographer is also possible within the gallery page.
-Viewed photos offer information such as a description, location (linking to that city directly on google-maps) and photographer name.
+This is an app that provides a list of people that are offering their dog walking services. The main screen shows dogwalkers by their profile picture and each one is zoomable into a profile page. Each profile can be edited and deleted.
+Viewed profiles offer information such as a description, location (linking to that city directly on google-maps) and service details.
 
 ## Demo
-https://lorengr.github.io/PhotoAlbum
+https://lorengrixti.herokuapp.com
 
 ### Initialisation
 ``` javascript
