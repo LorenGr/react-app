@@ -7,14 +7,11 @@ var express = require('express'),
     router = require('./server/routes');
 
 app.set('port', (process.env.PORT || 3001));
+app.use(express.static(__dirname + '/public'));
+app.get('/', function (request, response) {
+    response.render('public/index');
+});
 
-/*
- app.use(express.static(__dirname + '/public'));
-
- app.get('/', function (request, response) {
- response.render('public/index');
- });
- */
 
 //now we should configure the API to use bodyParser and look for 
 //JSON data in the request body
