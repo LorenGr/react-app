@@ -1,14 +1,16 @@
 import {call, put} from "redux-saga/effects";
 import assert from "assert";
 import {itemsFetchList} from "../../src/sagas/items";
-import ApiEmails from "../../src/api/items";
+import ApiItems from "../../src/api/items";
 
-describe('Emails saga', () => {
-    describe('Emails Fetch List', () => {
-        const generator = itemsFetchList();
+describe('Items saga', () => {
+    describe('Items Fetch List', () => {
+        const generator = itemsFetchList({
+            limit:100
+        });
 
         it('should return the ApiItems.getList call', () => {
-            assert.deepEqual(generator.next().value, call(ApiEmails.getList));
+            assert.deepEqual(generator.next().value, call(ApiItems.getList,[100]));
         });
 
         it('should return action', () => {

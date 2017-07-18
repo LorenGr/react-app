@@ -1,7 +1,7 @@
 import assert from 'assert';
 import items from '../../src/reducers/items';
 
-describe("Emails Reducer", () => {
+describe("Items Reducer", () => {
     describe("Add Item", () => {
         it("should return list with added item", () => {
             const state = {
