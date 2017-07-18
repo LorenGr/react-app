@@ -1,7 +1,9 @@
 import axios from 'axios';
 
 export default class ApiItems {
+
     static getList(limit) {
-        return axios.get("api/items?limit=" + limit);
+        const base = String(API_URL);
+        return axios.get(base+"/api/items?limit=" + limit);
     }
 }

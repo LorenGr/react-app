@@ -62064,7 +62064,8 @@ var ApiItems = function () {
     _createClass(ApiItems, null, [{
         key: "getList",
         value: function getList(limit) {
-            return _axios2.default.get("api/items?limit=" + limit);
+            var base = String("http://localhost:3001");
+            return _axios2.default.get(base + "/api/items?limit=" + limit);
         }
     }]);
 
