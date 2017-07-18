@@ -1,82 +1,74 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Table, Pagination, ProgressBar} from 'react-bootstrap';
+import {ProgressBar} from 'react-bootstrap';
+import InfiniteScroll from "react-infinite-scroll-component";
 
-import ListItem from './ListItem';
-import ListDelete from './ListDelete';
+let page = 1;
+let fetch_size = 30;
+const code_INCOMPLETE_DATA = 206;
 
-import {push} from 'react-router-redux';
+function dispatchFetch() {
+    this.dispatch({
+        type: 'ITEM_FETCH_LIST',
+        limit: page * fetch_size
+    });
+}
 
 export class List extends React.Component {
 
     constructor(props) {
         super(props);
+        this.fetchMore = this.fetchMore.bind(this);
+        this.refreshFunction = this.refreshFunction.bind(this);
 
         if (!this.props.items.length) {
-            this.props.dispatch({
-                type: 'ITEM_FETCH_LIST'
-            });
+            dispatchFetch.call(this.props);
         }
-        this.changePage = this.changePage.bind(this);
+    }
+
+    fetchMore() {
+        page++;
+        dispatchFetch.call(this.props);
+    }
+
+    refreshFunction() {
+        page = 1;
+        dispatchFetch.call(this.props);
     }
 
     render() {
-
-        const per_page = 5;
-        const pages = Math.ceil(this.props.items.length / per_page);
-        const current_page = this.props.page;
-        const start_offset = (current_page - 1) * per_page;
-        let start_count = 0;
-
         return this.props.items.length ? (
-            <div>
-                <ListDelete/>
-                <Table bordered hover responsive striped>
-                    <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Receiver</th>
-                        <th>Subject</th>
-                        <th>Date</th>
-                        <th>Bundle </th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {this.props.items.map((email, index) => {
-                        if (index >= start_offset && start_count < per_page) {
-                            start_count++;
-                            return (
-                                <ListItem key={email.id} item={email}/>
-                            )
-                        }
+
+            <div id="items" className="itemsMasonry">
+
+                <InfiniteScroll next={this.fetchMore}
+                                hasMore={this.props.noMore}
+                                pullDownToRefresh={true}
+                                refreshFunction={this.refreshFunction}
+                                loader={<h4>Loading...</h4>}>
+                    {this.props.items.map(item => {
+                        return (
+                            <div className="item" id={item.id} key={item["_id"]}>
+                                <img src={item.photo}/>
+                                <h2>{item.full_name}</h2>
+                                <span>{item.location}</span>
+                            </div>
+                        )
                     })}
-                    </tbody>
-                </Table>
-                <Pagination className="emails-pagination pull-right"
-                            bsSize="medium" maxButtons={10}
-                            first last next prev boundaryLinks
-                            items={pages}
-                            activePage={current_page}
-                            onSelect={this.changePage}/>
+                </InfiniteScroll>
+
             </div>
         ) : (
             <ProgressBar active now={100}/>
         );
     }
-
-    changePage(page) {
-        this.props.dispatch(push('/?page=' + page));
-    }
 }
 
 function mapStateToProps(state) {
     return ({
-        items: state.items.list || [],
-        page: Number(state.routing.locationBeforeTransitions.query.page) || 1
+        items: state.items.list && state.items.list.data || [],
+        noMore: state.items.list && state.items.list.status === code_INCOMPLETE_DATA
     });
 }
-
 
 export default connect(mapStateToProps)(List);

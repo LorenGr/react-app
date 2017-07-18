@@ -10,7 +10,6 @@ export class ListItem extends React.Component {
         this.modalDeleteShow = this.modalDeleteShow.bind(this);
     }
 
-
     render() {
         const item = this.props.item;
         return (

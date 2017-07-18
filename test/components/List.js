@@ -7,7 +7,7 @@ import {List} from '../../src/components/List';
 describe("List component", () => {
     describe("render", () => {
 
-        it("should render table", () => {
+        it("should render list", () => {
             //Mock the props
             const props = {
                 page: 1,
@@ -18,8 +18,7 @@ describe("List component", () => {
                 ]
             };
             const wrapper = shallow(<List {...props} />);
-            assert.equal(wrapper.find('Table').length, 1);
-            assert.equal(wrapper.find('Pagination').length, 1);
+            assert.equal(wrapper.find('#items').length, 1);
         });
 
         it("should render progressbar", () => {

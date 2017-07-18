@@ -1,4 +1,4 @@
-body,
+@import url(https://fonts.googleapis.com/css?family=Hind:700);body,
 html {
   margin: 0;
   padding: 0;
@@ -9,4 +9,18 @@ html {
 .progress {
   margin: 10px auto;
   width: 300px;
+}
+.item {
+  width: 128px;
+  height: 128px;
+  margin: 7px;
+  display: inline-block;
+}
+.item img {
+  border-radius: 8px;
+  overflow: hidden;
+}
+.item h2 {
+  font-family: 'Hind', sans-serif;
+  font-size: 14px;
 }
