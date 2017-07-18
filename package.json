@@ -64,6 +64,7 @@
     "test": "nyc mocha --compilers js:babel-register --recursive --require babel-polyfill --require ignore-styles",
     "start": "NODE_ENV=production npm run webpack && node index.js",
     "start-dev": "node index.js",
+    "heroku-prebuild": "npm install --only=dev",
     "webpack-server": "webpack-dev-server --historyApiFallback --inline --hot --host localhost --port 3000",
     "webpack": "webpack -p --colors --progress --config webpack.config.js"
   },
