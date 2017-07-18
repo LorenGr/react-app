@@ -63,7 +63,8 @@
   },
   "scripts": {
     "test": "nyc mocha --compilers js:babel-register --recursive --require babel-polyfill --require ignore-styles",
-    "start": "node index.js",
+    "start": "npm run build && node index.js",
+    "start-dev": "node index.js",
     "webpack": "webpack-dev-server --historyApiFallback --inline --hot --host localhost --port 3000",
     "build": "webpack --config webpack.config.js"
   },
