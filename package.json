@@ -6,7 +6,6 @@
   "dependencies": {
     "axios": "^0.16.2",
     "body-parser": "^1.17.2",
-    "bricks.js": "^1.8.0",
     "express": "^4.15.3",
     "foreman": "^2.0.0",
     "lodash": "^4.17.4",
@@ -65,8 +64,9 @@
     "test": "nyc mocha --compilers js:babel-register --recursive --require babel-polyfill --require ignore-styles",
     "start": "npm run build && node index.js",
     "start-dev": "node index.js",
-    "webpack": "webpack-dev-server --historyApiFallback --inline --hot --host localhost --port 3000",
-    "build": "webpack --config webpack.config.js"
+    "webpack-server": "webpack-dev-server --historyApiFallback --inline --hot --host localhost --port 3000",
+    "build": "NODE_ENV=production npm run webpack",
+    "webpack": "webpack --colors --progress --config webpack.config.js"
   },
   "repository": {
     "type": "git",
