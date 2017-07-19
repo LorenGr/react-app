@@ -28,15 +28,15 @@ sagaMiddleware.run(sagas);
 const render = Component => {
     ReactDOM.render(
         <AppContainer>
-            <Provider store={store}>
-                <Router history={history}>
-                    <Route path="/" component={App}>
-                        <IndexRoute component={Home}/>
-                        <Route path="edit(/:id)" component={Edit}/>
-                        <Route path="*" component={NotFound}/>
-                    </Route>
-                </Router>
-            </Provider>
+                <Provider store={store}>
+                    <Router history={history}>
+                        <Route path="/" component={App}>
+                            <IndexRoute component={Home}/>
+                            <Route path="edit(/:id)" component={Edit}/>
+                            <Route path="*" component={NotFound}/>
+                        </Route>
+                    </Router>
+                </Provider>
         </AppContainer>
         , document.getElementById('app')
     )

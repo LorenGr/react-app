@@ -1,5 +1,4 @@
 import React from 'react';
-import {PageHeader, Form, Col, FormGroup, Button} from 'react-bootstrap';
 import {Field, reduxForm} from 'redux-form';
 import {connect} from 'react-redux';
 import {goBack} from 'react-router-redux';

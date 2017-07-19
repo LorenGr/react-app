@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {ProgressBar} from 'react-bootstrap';
 import InfiniteScroll from "react-infinite-scroll-component";
 
 let page = 1;
@@ -43,7 +42,7 @@ export class List extends React.Component {
 
                 <InfiniteScroll next={this.fetchMore}
                                 hasMore={this.props.noMore}
-                                pullDownToRefresh={true}
+                                pullDownToRefresh={false}
                                 refreshFunction={this.refreshFunction}
                                 loader={<h4>Loading...</h4>}>
                     {this.props.items.map(item => {
@@ -59,7 +58,7 @@ export class List extends React.Component {
 
             </div>
         ) : (
-            <ProgressBar active now={100}/>
+            <div>Loading</div>
         );
     }
 }

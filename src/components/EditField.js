@@ -1,5 +1,4 @@
 import React from 'react';
-import {Col, FormGroup, FormControl, InputGroup, Glyphicon, HelpBlock} from 'react-bootstrap';
 
 export default class EditField extends React.Component {
 
