@@ -7,6 +7,15 @@ Viewed profiles offer information such as a description, location (linking to th
 https://lorengrixti.herokuapp.com
 
 ### Initialisation
+
+## Development
+*Start webpack-server and Rest API
+``` javascript
+npm webpack-server
+npm start-dev
+
+## Production
+*Build application and Start Rest API*
 ``` javascript
 npm start
 ```

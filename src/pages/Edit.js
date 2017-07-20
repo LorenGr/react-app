@@ -23,11 +23,9 @@ export class Edit extends React.Component {
 
         return (
             <div>
-                <PageHeader>
                     <span>{isEditMode ? 'Edit' : 'Create'}</span> Photo
-                </PageHeader>
 
-                <Form onSubmit={this.props.handleSubmit(this.submit) } horizontal>
+                <form onSubmit={this.props.handleSubmit(this.submit) } horizontal>
                     <Field glyph="user" name="recipient" label="Recipient" component={EditField}/>
                     <Field glyph="pencil" name="subject" label="Subject" component={EditField}/>
 
@@ -43,7 +41,7 @@ export class Edit extends React.Component {
                                     onClick={this.props.reset}>Reset</Button>
                         </Col>
                     </FormGroup>
-                </Form>
+                </form>
             </div>
         );
     }
