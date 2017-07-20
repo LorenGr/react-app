@@ -1,5 +1,4 @@
 import React from 'react';
-import {Button, Modal} from 'react-bootstrap';
 import {connect} from 'react-redux';
 
 export class ListDelete extends React.Component {
@@ -12,25 +11,19 @@ export class ListDelete extends React.Component {
 
     render() {
         return (
-            <Modal show={this.props.modal_delete.show}>
-                <Modal.Header>
-                    <Modal.Title>
-                        Are you sure you want to delete &nbsp;
-                        <strong>{this.props.modal_delete.name}</strong>?
-                    </Modal.Title>
-                </Modal.Header>
-                <Modal.Footer>
-                    <Button onClick={this.modalHide}>No</Button>
-                    <Button onClick={this.emailDelete} bsStyle="primary">Yes</Button>
-                </Modal.Footer>
-            </Modal>
+
+            <div show={this.props.modal_delete.show}>
+                Are you sure you want to delete &nbsp;
+                <Button onClick={this.modalHide}>No</Button>
+                <Button onClick={this.emailDelete} bsStyle="primary">Yes</Button>
+            </div>
         );
     }
 
     emailDelete(event) {
         this.props.dispatch({
-            type : "ITEM_DELETE",
-            id : this.props.modal_delete.id
+            type: "ITEM_DELETE",
+            id: this.props.modal_delete.id
         });
         this.props.dispatch({
             type: "ITEM_DELETE_MODAL_HIDE"
@@ -43,6 +36,7 @@ export class ListDelete extends React.Component {
         });
     }
 }
+
 function mapStateToProps(state) {
     let modal_delete;
 

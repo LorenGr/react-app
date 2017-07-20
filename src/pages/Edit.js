@@ -4,8 +4,19 @@ import {connect} from 'react-redux';
 import {goBack} from 'react-router-redux';
 import _ from 'lodash';
 import {find} from 'lodash';
+import Paper from 'material-ui/Paper';
+import FormGroup from 'material-ui/Form/FormGroup';
+import Button from 'material-ui/Button';
+import TextField from 'material-ui/TextField';
 
-import EditField from '../components/EditField';
+const renderTextField = ({input, label, meta: {touched, error}, ...custom}) => (
+    <TextField helperText={label} placeholder={label}
+               label={touched && error} fullWidth
+               {...input}
+               {...custom}
+    />
+);
+
 
 export class Edit extends React.Component {
 
@@ -18,31 +29,22 @@ export class Edit extends React.Component {
     }
 
     render() {
-
         const isEditMode = this.form_type == 'edit';
-
         return (
-            <div>
-                    <span>{isEditMode ? 'Edit' : 'Create'}</span> Photo
-
-                <form onSubmit={this.props.handleSubmit(this.submit) } horizontal>
-                    <Field glyph="user" name="recipient" label="Recipient" component={EditField}/>
-                    <Field glyph="pencil" name="subject" label="Subject" component={EditField}/>
-
+            <Paper elevation={0} square={true} >
+                <span>{isEditMode ? 'Edit' : 'Create'}</span> Photo
+                <form onSubmit={this.props.handleSubmit(this.submit)}>
+                    <Field name="fullname" label="Full Name" component={renderTextField}/>
                     <FormGroup>
-                        <Col smOffset={2} sm={8}>
-
-                            <Button type="submit" disabled={this.props.invalid || this.props.submitting}>
-                                {isEditMode ? 'Save' : 'Create'}
-                            </Button>
-
-                            <Button type="button"
-                                    disabled={this.props.pristine || this.props.submitting}
-                                    onClick={this.props.reset}>Reset</Button>
-                        </Col>
+                        <Button type="submit" disabled={this.props.invalid || this.props.submitting}>
+                            {isEditMode ? 'Save' : 'Create'}
+                        </Button>
+                        <Button type="button"
+                                disabled={this.props.pristine || this.props.submitting}
+                                onClick={this.props.reset}>Reset</Button>
                     </FormGroup>
                 </form>
-            </div>
+            </Paper>
         );
     }
 
@@ -53,7 +55,6 @@ export class Edit extends React.Component {
             recipient: values.recipient,
             subject: values.subject
         });
-
         this.props.dispatch(goBack());
     }
 }
@@ -67,20 +68,20 @@ const EditForm = reduxForm({
             errors.recipient = "Please add a recipient to your email.";
         }
         return errors;
-
     }
+
 })(Edit);
 
 function mapEditStateToProps(state, own_props) {
 
     let form_data = _.find(
-            state.items.list,
-            {id: Number(own_props.params.id)}
-        ) || {
-            id: 0,
-            recipient: '',
-            subject: ''
-        };
+        state.items.list,
+        {id: Number(own_props.params.id)}
+    ) || {
+        id: 0,
+        recipient: '',
+        subject: ''
+    };
 
     return {
         initialValues: form_data
