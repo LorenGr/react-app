@@ -38,8 +38,8 @@ class AppToolbar extends React.Component {
                             <MenuIcon/>
                         </IconButton>
 
-                        <Typography type="title" color="inherit" className={classes.flex}>
-                            Title
+                        <Typography color="inherit" type="title" className={classes.flex}>
+                            My Contacts
                         </Typography>
                         <Button href="/" color="contrast">Home</Button>
                     </Toolbar>

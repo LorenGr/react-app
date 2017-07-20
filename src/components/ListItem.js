@@ -1,10 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router';
 import {withStyles, createStyleSheet} from 'material-ui/styles';
 import Card, {CardContent, CardMedia} from 'material-ui/Card';
 import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
-import TouchRipple from 'material-ui/internal/TouchRipple';
 
 const styleSheet = createStyleSheet('ListItem', theme => ({
 
@@ -46,26 +46,23 @@ class ListItem extends React.Component {
         const item = this.props.item;
         const classes = this.props.classes;
         return (
-
-            <Button href={'/edit/'+item.id} className={classes.root}>
-                <Card>
-                    <CardMedia>
-                        <img src={item.photo}/>
-                    </CardMedia>
-
-                    <CardContent className={classes.content}>
-
-                        <Typography type="title" className={classes.title}>
-                            {item.full_name}
-                        </Typography>
-                        <Typography type="caption" className={classes.caption}>
-                            {item.location}
-                        </Typography>
-
-                    </CardContent>
-                </Card>
+            <Button className={classes.root}>
+                <Link to={'edit/' + item.id}>
+                    <Card>
+                        <CardMedia>
+                            <img src={item.photo}/>
+                        </CardMedia>
+                        <CardContent className={classes.content}>
+                            <Typography type="title" className={classes.title}>
+                                {item.full_name}
+                            </Typography>
+                            <Typography type="caption" className={classes.caption}>
+                                {item.location}
+                            </Typography>
+                        </CardContent>
+                    </Card>
+                </Link>
             </Button>
-
         );
     }
 
