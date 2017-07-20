@@ -3,23 +3,29 @@ import {connect} from 'react-redux';
 import {withStyles, createStyleSheet} from 'material-ui/styles';
 import Card, {CardContent, CardMedia} from 'material-ui/Card';
 import Typography from 'material-ui/Typography';
+import Button from 'material-ui/Button';
+import TouchRipple from 'material-ui/internal/TouchRipple';
 
-const styleSheet = createStyleSheet('ListItem', {
+const styleSheet = createStyleSheet('ListItem', theme => ({
+
     root: {
+        padding: 0,
         maxWidth: 128,
         display: 'inline-block',
-        margin: 8,
+        margin: theme.spacing.unit,
         verticalAlign: 'top'
     },
     caption: {
-        marginTop: 8,
+        marginTop: theme.spacing.unit,
         whiteSpace: 'nowrap',
         textOverflow: 'ellipsis',
         overflow: 'hidden'
     },
     content: {
         height: 100,
-        overflow: 'hidden'
+        overflow: 'hidden',
+        textAlign: 'left',
+        textTransform: 'none'
     },
     title: {
         overflow: 'hidden',
@@ -27,7 +33,7 @@ const styleSheet = createStyleSheet('ListItem', {
         '-webkit-line-clamp': 2,
         '-webkit-box-orient': 'vertical'
     }
-});
+}));
 
 class ListItem extends React.Component {
 
@@ -40,26 +46,28 @@ class ListItem extends React.Component {
         const item = this.props.item;
         const classes = this.props.classes;
         return (
-            <Card className={classes.root}>
 
-                <CardMedia>
-                    <img src={item.photo}/>
-                </CardMedia>
+            <Button href={'/edit/'+item.id} className={classes.root}>
+                <Card>
+                    <CardMedia>
+                        <img src={item.photo}/>
+                    </CardMedia>
 
-                <CardContent className={classes.content}>
-                    <Typography type="title" className={classes.title}>
-                        {item.full_name}
-                    </Typography>
-                    <Typography type="caption" className={classes.caption}>
-                        {item.location}
-                    </Typography>
-                </CardContent>
+                    <CardContent className={classes.content}>
 
+                        <Typography type="title" className={classes.title}>
+                            {item.full_name}
+                        </Typography>
+                        <Typography type="caption" className={classes.caption}>
+                            {item.location}
+                        </Typography>
 
-            </Card>
+                    </CardContent>
+                </Card>
+            </Button>
+
         );
     }
-
 
     modalDeleteShow(event) {
 
