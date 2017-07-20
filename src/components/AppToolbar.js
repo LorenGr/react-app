@@ -41,7 +41,8 @@ class AppToolbar extends React.Component {
                         <Typography color="inherit" type="title" className={classes.flex}>
                             My Contacts
                         </Typography>
-                        <Button href="/" color="contrast">Home</Button>
+
+
                     </Toolbar>
                 </AppBar>
             </div>

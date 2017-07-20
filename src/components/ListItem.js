@@ -22,10 +22,14 @@ const styleSheet = createStyleSheet('ListItem', theme => ({
         overflow: 'hidden'
     },
     content: {
-        height: 100,
+        height: 58,
         overflow: 'hidden',
         textAlign: 'left',
-        textTransform: 'none'
+        textTransform: 'none',
+
+    },
+    link: {
+        textDecoration: 'none'
     },
     title: {
         overflow: 'hidden',
@@ -47,7 +51,7 @@ class ListItem extends React.Component {
         const classes = this.props.classes;
         return (
             <Button className={classes.root}>
-                <Link to={'edit/' + item.id}>
+                <Link className={classes.link} to={'edit/' + item.id}>
                     <Card>
                         <CardMedia>
                             <img src={item.photo}/>
