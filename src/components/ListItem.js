@@ -1,8 +1,35 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Link} from 'react-router';
+import {withStyles, createStyleSheet} from 'material-ui/styles';
+import Card, {CardContent, CardMedia} from 'material-ui/Card';
+import Typography from 'material-ui/Typography';
 
-export class ListItem extends React.Component {
+const styleSheet = createStyleSheet('ListItem', {
+    root: {
+        maxWidth: 128,
+        display: 'inline-block',
+        margin: 8,
+        verticalAlign: 'top'
+    },
+    caption: {
+        marginTop: 8,
+        whiteSpace: 'nowrap',
+        textOverflow: 'ellipsis',
+        overflow: 'hidden'
+    },
+    content: {
+        height: 100,
+        overflow: 'hidden'
+    },
+    title: {
+        overflow: 'hidden',
+        display: '-webkit-box',
+        '-webkit-line-clamp': 2,
+        '-webkit-box-orient': 'vertical'
+    }
+});
+
+class ListItem extends React.Component {
 
     constructor(props) {
         super(props);
@@ -11,35 +38,28 @@ export class ListItem extends React.Component {
 
     render() {
         const item = this.props.item;
+        const classes = this.props.classes;
         return (
-            <tr className="ItemContainer">
-                <td>{item.from}</td>
-                <td>{item.recipient}</td>
-                <td>{item.subject}</td>
-                <td>{this.dateToString(item.date)}</td>
-                <td>{item.bundle}</td>
-                <td>
-                    <Link to={'/edit/' + item.id}>
-                        <Button bsSize="xsmall">
-                            Edit <Glyphicon glyph="edit"/>
-                        </Button>
-                    </Link>
-                </td>
-                <td>
-                    <Button bsSize="xsmall"
-                            onClick={this.modalDeleteShow}
-                            data-id={item.id}
-                            data-itemname={item.from}>
-                        Delete <Glyphicon glyph="remove-circle"/>
-                    </Button>
-                </td>
-            </tr>
+            <Card className={classes.root}>
+
+                <CardMedia>
+                    <img src={item.photo}/>
+                </CardMedia>
+
+                <CardContent className={classes.content}>
+                    <Typography type="title" className={classes.title}>
+                        {item.full_name}
+                    </Typography>
+                    <Typography type="caption" className={classes.caption}>
+                        {item.location}
+                    </Typography>
+                </CardContent>
+
+
+            </Card>
         );
     }
 
-    dateToString(date) {
-        return date instanceof Date ? date.toISOString() : date;
-    }
 
     modalDeleteShow(event) {
 
@@ -53,8 +73,11 @@ export class ListItem extends React.Component {
         });
     }
 }
+
 ListItem.propTypes = {
     item: React.PropTypes.object.isRequired
 };
 
-export default connect()(ListItem);
+export default connect()(
+    withStyles(styleSheet)(ListItem)
+);

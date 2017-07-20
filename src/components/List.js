@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import InfiniteScroll from "react-infinite-scroll-component";
+import ListItem from './ListItem';
 
 let page = 1;
 let fetch_size = 30;
@@ -47,11 +48,7 @@ export class List extends React.Component {
                                 loader={<h4>Loading...</h4>}>
                     {this.props.items.map(item => {
                         return (
-                            <div className="item" id={item.id} key={item["_id"]}>
-                                <img src={item.photo}/>
-                                <h2>{item.full_name}</h2>
-                                <span>{item.location}</span>
-                            </div>
+                            <ListItem key={item["_id"]} item={item} />
                         )
                     })}
                 </InfiniteScroll>
