@@ -11,6 +11,7 @@ https://lorengrixti.herokuapp.com
 ## Development
 *Start webpack-server and Rest API*
 ``` javascript
+npm install
 npm webpack-server
 npm start-dev
 ```
