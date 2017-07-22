@@ -3,9 +3,6 @@ import {connect} from 'react-redux';
 import InfiniteScroll from "react-infinite-scroll-component";
 import ListItem from './ListItem';
 
-import _ from 'lodash';
-import {get} from 'lodash';
-
 let page = 1;
 let fetch_size = 30;
 const code_INCOMPLETE_DATA = 206;

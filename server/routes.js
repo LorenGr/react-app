@@ -21,27 +21,26 @@ router.route('/items')
     })
     .post(function (req, res) {
         var item = new Item();
-
-        //body parser lets us use the req.body
-        item.about = req.body.about;
-        item.full_name = req.body.full_name;
-        item.photo = req.body.photo;
-        item.location = req.body.location;
-        item.email = req.body.email;
-        item.telephone = req.body.telephone;
-        item.contact_method = req.body.contact_method;
-        item.hourly_rate = req.body.hourly_rate;
-        item.available_hours = req.body.available_hours;
-        item.available_days = req.body.available_days;
-        item.age = req.body.age;
-        item.about = req.body.about;
-        item.breed_exceptions = req.body.breed_exceptions;
-        item.max_dogs = req.body.max_dogs;
+        Object.assign(item, req.body);
 
         item.save(function (err) {
             if (err) res.send(err);
             res.json({message: 'Item successfully added!'});
         });
+    });
+
+router.route('/items/:id')
+    .put(function (req, res) {
+        Item.findOneAndUpdate(
+            {id: req.params.id},
+            req.body,
+            {new:true},
+            function (err,doc) {
+                if (err) res.send(err);
+                res.json(doc);
+            }
+        );
+
     });
 
 module.exports = router;

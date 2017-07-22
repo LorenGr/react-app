@@ -1,12 +1,22 @@
 import axios from 'axios';
 
+const base = String(API_URL);
+
 export default class ApiItems {
 
     static getList(limit) {
-        const base = String(API_URL);
+
         return axios.get(
             base
             + "/api/items"
             + (limit ? "?limit=" + limit : ""));
+    }
+
+    static editList(payload) {
+        return axios.put(
+            base
+            + "/api/items/"
+            + payload[0].id
+        ,payload[0]);
     }
 }

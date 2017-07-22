@@ -3,8 +3,7 @@ import {withStyles, createStyleSheet} from 'material-ui/styles';
 import {Field, reduxForm} from 'redux-form';
 import {connect} from 'react-redux';
 import {goBack} from 'react-router-redux';
-import _ from 'lodash';
-import {find} from 'lodash';
+import find from 'lodash.find';
 import Paper from 'material-ui/Paper';
 import Avatar from 'material-ui/Avatar';
 import FormGroup from 'material-ui/Form/FormGroup';
@@ -133,7 +132,7 @@ const EditForm = reduxForm({
 
 function mapEditStateToProps(state, own_props) {
 
-    let form_data = _.find(
+    let form_data = find(
         state.items.list && state.items.list.data,
         {id: Number(own_props.params.id)}
     ) || {
