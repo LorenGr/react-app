@@ -31,7 +31,7 @@ export default function items(state = {}, action) {
             return new_state;
 
         case "ITEM_ADD" :
-            new_state.list.push({
+            new_state.list.data.push({
                 from: "Loren",
                 bundle: "Inbox",
                 date: action.date || new Date(),
@@ -42,15 +42,9 @@ export default function items(state = {}, action) {
             return new_state;
 
         case "ITEM_EDIT" :
-            for (const email of new_state.list) {
-                if (email.id === action.id) {
-                    Object.assign(email, {
-                        from: "Loren",
-                        bundle: "Inbox",
-                        date: action.date || new Date(),
-                        recipient: action.recipient,
-                        subject: action.subject
-                    });
+            for (const item of new_state.list.data) {
+                if (item.id === action.id) {
+                    Object.assign(item, action.values);
                     break;
                 }
             }

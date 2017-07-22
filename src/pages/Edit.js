@@ -6,6 +6,7 @@ import {goBack} from 'react-router-redux';
 import _ from 'lodash';
 import {find} from 'lodash';
 import Paper from 'material-ui/Paper';
+import Avatar from 'material-ui/Avatar';
 import FormGroup from 'material-ui/Form/FormGroup';
 import TextField from 'material-ui/TextField';
 import AppBar from 'material-ui/AppBar';
@@ -17,8 +18,7 @@ import ClearIcon from 'material-ui-icons/Clear';
 
 
 const styleSheet = createStyleSheet('Edit', theme => ({
-    bar: {},
-    icon: {},
+
     title: {
         flex: 1
     },
@@ -30,6 +30,11 @@ const styleSheet = createStyleSheet('Edit', theme => ({
     },
     field: {
         marginTop: theme.spacing.unit * 3
+    },
+    avatar: {
+        margin: '0 auto',
+        width: 128,
+        height: 128
     }
 }));
 
@@ -41,21 +46,25 @@ const renderTextField = ({input, label, meta: {touched, error}, ...custom}) => (
     />
 );
 
+const renderImageUpload = ({input, label, meta: {touched, error}, ...custom}) => (
+    <Avatar src={input.value} {...custom} />
+);
+
 
 const ProfileBar = ({cancel, pristine, reset, submitting, invalid, classes}) => (
-    <AppBar color="default" position="static" className={classes.bar}>
-
+    <AppBar color="default" position="static">
         <Toolbar>
-            <IconButton className={classes.icon} type="button" onClick={cancel} aria-label="Cancel">
+            <IconButton type="button" onClick={cancel} aria-label="Cancel">
                 <ClearIcon/>
             </IconButton>
-
             <Typography className={classes.title} type="title">
                 Edit Profile
             </Typography>
-
-            <IconButton className={classes.icon} type="submit" disabled={invalid || submitting} aria-label="Save">
-                <DoneIcon color="primary"/>
+            <IconButton className={classes.icon}
+                        type="submit"
+                        disabled={invalid || submitting || pristine}
+                        aria-label="Save">
+                <DoneIcon />
             </IconButton>
         </Toolbar>
 
@@ -64,8 +73,12 @@ const ProfileBar = ({cancel, pristine, reset, submitting, invalid, classes}) => 
 );
 const ProfileView = ({classes}) => (
     <FormGroup className={classes.form}>
-        <Field className={classes.field} name="fullname" label="Full Name" component={renderTextField}/>
+        <Field className={classes.avatar} name="photo" label="Avatar" component={renderImageUpload}/>
+        <Field className={classes.field} name="full_name" label="Full Name" component={renderTextField}/>
         <Field className={classes.field} name="location" label="Location" component={renderTextField}/>
+        <Field className={classes.field} name="email" label="Email" component={renderTextField}/>
+        <Field className={classes.field} name="telephone" label="Telephone / Mobile" component={renderTextField}/>
+        <Field className={classes.field} name="age" label="Age" component={renderTextField}/>
     </FormGroup>
 );
 
@@ -85,8 +98,7 @@ class Edit extends React.Component {
         this.props.dispatch({
             type: "ITEM_" + this.form_type.toUpperCase(),
             id: values.id,
-            recipient: values.recipient,
-            subject: values.subject
+            values
         });
         this.props.dispatch(goBack());
     }
@@ -122,14 +134,13 @@ const EditForm = reduxForm({
 function mapEditStateToProps(state, own_props) {
 
     let form_data = _.find(
-        state.items.list,
+        state.items.list && state.items.list.data,
         {id: Number(own_props.params.id)}
     ) || {
         id: 0,
         recipient: '',
         subject: ''
     };
-
     return {
         initialValues: form_data
     }

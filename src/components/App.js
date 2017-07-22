@@ -16,7 +16,6 @@ export default class App extends React.Component {
     render() {
 
         const fadeConfig = { stiffness: 200, damping: 22 };
-        const popConfig = { stiffness: 360, damping: 25 };
         const slideConfig = { stiffness: 330, damping: 30 };
 
         const style = {

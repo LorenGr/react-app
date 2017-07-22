@@ -3,6 +3,9 @@ import {connect} from 'react-redux';
 import InfiniteScroll from "react-infinite-scroll-component";
 import ListItem from './ListItem';
 
+import _ from 'lodash';
+import {get} from 'lodash';
+
 let page = 1;
 let fetch_size = 30;
 const code_INCOMPLETE_DATA = 206;
@@ -39,7 +42,7 @@ class List extends React.Component {
     render() {
         return this.props.items.length ? (
 
-            <div id="items" className="itemsMasonry">
+            <div id="items" style={{textAlign: 'center'}}>
 
                 <InfiniteScroll next={this.fetchMore}
                                 hasMore={this.props.noMore}
@@ -48,7 +51,7 @@ class List extends React.Component {
                                 loader={<h4>Loading...</h4>}>
                     {this.props.items.map(item => {
                         return (
-                            <ListItem key={item["_id"]} item={item} />
+                            <ListItem key={item["_id"]} item={item}/>
                         )
                     })}
                 </InfiniteScroll>
