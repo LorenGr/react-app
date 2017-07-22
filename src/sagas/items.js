@@ -17,3 +17,11 @@ export function* itemsEditList(action) {
         items: items
     });
 }
+
+export function* itemsAddList(action) {
+    const items = yield call(ApiItems.addList,[action.values]);
+    yield put({
+        type: 'ITEM_ADD_SUCCESS',
+        items: items
+    });
+}

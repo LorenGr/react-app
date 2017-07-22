@@ -51,7 +51,7 @@ class ListItem extends React.Component {
         const classes = this.props.classes;
         return (
             <Button className={classes.root}>
-                <Link className={classes.link} to={'edit/' + item.id}>
+                <Link className={classes.link} to={'edit/' + item['_id']}>
                     <Card>
                         <CardMedia>
                             <img src={item.photo}/>

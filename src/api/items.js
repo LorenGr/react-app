@@ -19,4 +19,11 @@ export default class ApiItems {
             + payload[0].id
         ,payload[0]);
     }
+
+    static addList(payload) {
+        return axios.post(
+            base
+            + "/api/items"
+            ,payload[0]);
+    }
 }

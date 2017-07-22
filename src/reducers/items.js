@@ -30,15 +30,8 @@ export default function items(state = {}, action) {
             new_state.list = action.items;
             return new_state;
 
-        case "ITEM_ADD" :
-            new_state.list.data.push({
-                from: "Loren",
-                bundle: "Inbox",
-                date: action.date || new Date(),
-                id: action.id || _.uniqueId,
-                recipient: action.recipient,
-                subject: action.subject
-            });
+        case "ITEM_ADD_SUCCESS" :
+            new_state.list.data.push(action.items.data);
             return new_state;
 
         case "ITEM_EDIT_SUCCESS" :

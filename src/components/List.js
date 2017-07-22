@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import InfiniteScroll from "react-infinite-scroll-component";
 import ListItem from './ListItem';
+import {LinearProgress} from 'material-ui/Progress';
 
 let page = 1;
 let fetch_size = 30;
@@ -45,17 +46,17 @@ class List extends React.Component {
                                 hasMore={this.props.noMore}
                                 pullDownToRefresh={false}
                                 refreshFunction={this.refreshFunction}
-                                loader={<h4>Loading...</h4>}>
+                                loader={<LinearProgress/>}>
                     {this.props.items.map(item => {
                         return (
-                            <ListItem key={item["_id"]} item={item}/>
+                            <ListItem key={item['_id']} item={item}/>
                         )
                     })}
                 </InfiniteScroll>
 
             </div>
         ) : (
-            <div>Loading</div>
+            <LinearProgress/>
         );
     }
 }

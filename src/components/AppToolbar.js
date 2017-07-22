@@ -1,12 +1,12 @@
 import React from 'react';
 import {withStyles, createStyleSheet} from 'material-ui/styles';
-
+import {Link} from 'react-router';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
-import Button from 'material-ui/Button';
 import IconButton from 'material-ui/IconButton';
-import MenuIcon from 'material-ui-icons/Menu';
+import AssignmentIndIcon from 'material-ui-icons/AssignmentInd';
+import PersonAddIcon from 'material-ui-icons/PersonAdd';
 import {blue} from 'material-ui/colors';
 
 const styleSheet = createStyleSheet('AppToolbar', {
@@ -35,12 +35,18 @@ class AppToolbar extends React.Component {
                     <Toolbar>
 
                         <IconButton color="contrast" aria-label="Menu">
-                            <MenuIcon/>
+                            <AssignmentIndIcon/>
                         </IconButton>
 
                         <Typography color="inherit" type="title" className={classes.flex}>
                             My Contacts
                         </Typography>
+
+                        <Link to={'edit'}>
+                            <IconButton color="contrast" aria-label="Menu">
+                                <PersonAddIcon/>
+                            </IconButton>
+                        </Link>
 
 
                     </Toolbar>

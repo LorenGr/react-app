@@ -50,20 +50,20 @@ const renderImageUpload = ({input, label, meta: {touched, error}, ...custom}) =>
 );
 
 
-const ProfileBar = ({cancel, pristine, reset, submitting, invalid, classes}) => (
+const ProfileBar = ({cancel, pristine, reset, submitting, invalid, classes, title}) => (
     <AppBar color="default" position="static">
         <Toolbar>
             <IconButton type="button" onClick={cancel} aria-label="Cancel">
                 <ClearIcon/>
             </IconButton>
             <Typography className={classes.title} type="title">
-                Edit Profile
+                {title} Profile
             </Typography>
             <IconButton className={classes.icon}
                         type="submit"
                         disabled={invalid || submitting || pristine}
                         aria-label="Save">
-                <DoneIcon />
+                <DoneIcon/>
             </IconButton>
         </Toolbar>
 
@@ -107,10 +107,13 @@ class Edit extends React.Component {
     }
 
     render() {
+
+        const isEditMode = this.form_type === 'edit';
         return (
             <Paper className="container" elevation={0} square={true}>
                 <form onSubmit={this.props.handleSubmit(this.submit)}>
-                    <ProfileBar {...this.props} cancel={this.cancel}/>
+                    <ProfileBar title={isEditMode ? 'Edit' : 'Create'}
+                                {...this.props} cancel={this.cancel}/>
                     <ProfileView elevation={0} square={true} {...this.props} />
                 </form>
             </Paper>
@@ -134,12 +137,8 @@ function mapEditStateToProps(state, own_props) {
 
     let form_data = find(
         state.items.list && state.items.list.data,
-        {id: Number(own_props.params.id)}
-    ) || {
-        id: 0,
-        recipient: '',
-        subject: ''
-    };
+        { '_id' : own_props.params.id}
+    ) || {};
     return {
         initialValues: form_data
     }

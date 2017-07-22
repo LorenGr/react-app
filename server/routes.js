@@ -20,12 +20,12 @@ router.route('/items')
         });
     })
     .post(function (req, res) {
-        var item = new Item();
-        Object.assign(item, req.body);
+        var item = new Item(),
+            new_item = Object.assign(item, req.body);
 
         item.save(function (err) {
             if (err) res.send(err);
-            res.json({message: 'Item successfully added!'});
+            res.json(new_item);
         });
     });
 
@@ -34,8 +34,8 @@ router.route('/items/:id')
         Item.findOneAndUpdate(
             {id: req.params.id},
             req.body,
-            {new:true},
-            function (err,doc) {
+            {new: true},
+            function (err, doc) {
                 if (err) res.send(err);
                 res.json(doc);
             }
