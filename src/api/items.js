@@ -16,7 +16,7 @@ export default class ApiItems {
         return axios.put(
             base
             + "/api/items/"
-            + payload[0].id
+            + payload[0]['_id']
         ,payload[0]);
     }
 

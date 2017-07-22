@@ -88,7 +88,7 @@ class Edit extends React.Component {
 
     constructor(props) {
         super(props);
-        this.form_type = (props.initialValues.id > 0 ? 'edit' : 'add');
+        this.form_type = ( props.initialValues['_id']  ? 'edit' : 'add');
         this.submit = this.submit.bind(this);
         this.cancel = this.cancel.bind(this);
     }
@@ -96,7 +96,6 @@ class Edit extends React.Component {
     submit(values) {
         this.props.dispatch({
             type: "ITEM_" + this.form_type.toUpperCase(),
-            id: values.id,
             values
         });
         this.props.dispatch(goBack());

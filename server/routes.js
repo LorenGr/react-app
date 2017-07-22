@@ -31,8 +31,9 @@ router.route('/items')
 
 router.route('/items/:id')
     .put(function (req, res) {
-        Item.findOneAndUpdate(
-            {id: req.params.id},
+        delete req.body['_id'];
+        Item.findByIdAndUpdate(
+            req.params.id,
             req.body,
             {new: true},
             function (err, doc) {

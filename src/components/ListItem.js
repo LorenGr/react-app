@@ -31,6 +31,10 @@ const styleSheet = createStyleSheet('ListItem', theme => ({
     link: {
         textDecoration: 'none'
     },
+    photo: {
+        width: 128,
+        height: 128
+    },
     title: {
         overflow: 'hidden',
         display: '-webkit-box',
@@ -53,7 +57,7 @@ class ListItem extends React.Component {
             <Button className={classes.root}>
                 <Link className={classes.link} to={'edit/' + item['_id']}>
                     <Card>
-                        <CardMedia>
+                        <CardMedia className={classes.photo}>
                             <img src={item.photo}/>
                         </CardMedia>
                         <CardContent className={classes.content}>

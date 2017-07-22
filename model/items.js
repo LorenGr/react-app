@@ -6,7 +6,6 @@ var mongoose = require('mongoose');
 //object that shows the shape of your database entries.
 
 var ItemsSchema = new mongoose.Schema({
-    id : Number,
     full_name: String,
     photo: String,
     location: String,

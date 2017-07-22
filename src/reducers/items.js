@@ -36,7 +36,7 @@ export default function items(state = {}, action) {
 
         case "ITEM_EDIT_SUCCESS" :
             for (const item of new_state.list.data) {
-                if (item.id === action.items.data.id) {
+                if (item["_id"] === action.items.data["_id"]) {
                     Object.assign(item, action.items.data);
                     break;
                 }
