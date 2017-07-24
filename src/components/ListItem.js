@@ -15,6 +15,10 @@ const styleSheet = createStyleSheet('ListItem', theme => ({
         margin: theme.spacing.unit,
         verticalAlign: 'top'
     },
+    photo: {
+        width: 128,
+        height: 128
+    },
     caption: {
         marginTop: theme.spacing.unit,
         whiteSpace: 'nowrap',
@@ -31,16 +35,33 @@ const styleSheet = createStyleSheet('ListItem', theme => ({
     link: {
         textDecoration: 'none'
     },
-    photo: {
-        width: 128,
-        height: 128
-    },
     title: {
         overflow: 'hidden',
         display: '-webkit-box',
         '-webkit-line-clamp': 2,
         '-webkit-box-orient': 'vertical'
-    }
+    },
+    [theme.breakpoints.down('sm') ]: {
+        root: {
+            margin: 3,
+            width: '48%',
+            maxWidth: 'none',
+
+        },
+        photo: {
+            width: '100%',
+            height:'initial',
+            '& img': {
+                width: '100%',
+            }
+        },
+        content : {
+            height : 35
+        },
+        title: {
+            '-webkit-line-clamp': 1,
+        },
+    },
 }));
 
 class ListItem extends React.Component {
@@ -51,8 +72,8 @@ class ListItem extends React.Component {
     }
 
     render() {
-        const item = this.props.item;
-        const classes = this.props.classes;
+        const {item, classes} = this.props;
+
         return (
             <Button className={classes.root}>
                 <Link className={classes.link} to={'edit/' + item['_id']}>

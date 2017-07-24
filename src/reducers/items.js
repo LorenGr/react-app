@@ -35,10 +35,12 @@ export default function items(state = {}, action) {
             return new_state;
 
         case "ITEM_EDIT_SUCCESS" :
-            for (const item of new_state.list.data) {
-                if (item["_id"] === action.items.data["_id"]) {
-                    Object.assign(item, action.items.data);
-                    break;
+            if (new_state.list.data.length) {
+                for (const item of new_state.list.data) {
+                    if (item["_id"] === action.items.data["_id"]) {
+                        Object.assign(item, action.items.data);
+                        break;
+                    }
                 }
             }
             return new_state;
