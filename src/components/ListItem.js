@@ -68,7 +68,6 @@ class ListItem extends React.Component {
 
     constructor(props) {
         super(props);
-        this.modalDeleteShow = this.modalDeleteShow.bind(this);
     }
 
     render() {
@@ -93,18 +92,6 @@ class ListItem extends React.Component {
                 </Link>
             </Button>
         );
-    }
-
-    modalDeleteShow(event) {
-
-        const emailId = Number(event.target.dataset.id);
-        const itemName = event.target.dataset.itemname;
-
-        this.props.dispatch({
-            type: "ITEM_DELETE_MODAL_SHOW",
-            id: emailId,
-            name: itemName
-        });
     }
 }
 

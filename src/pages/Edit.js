@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import {goBack} from 'react-router-redux';
 import find from 'lodash.find';
 import Paper from 'material-ui/Paper';
+import ListDelete from '../components/ListDelete';
 import Avatar from 'material-ui/Avatar';
 import FormGroup from 'material-ui/Form/FormGroup';
 import TextField from 'material-ui/TextField';
@@ -14,6 +15,7 @@ import Typography from 'material-ui/Typography'
 import IconButton from 'material-ui/IconButton';
 import DoneIcon from 'material-ui-icons/Done';
 import ClearIcon from 'material-ui-icons/Clear';
+import DeleteForeverIcon from 'material-ui-icons/DeleteForever';
 
 
 const styleSheet = createStyleSheet('Edit', theme => ({
@@ -49,16 +51,23 @@ const renderImageUpload = ({input, label, meta: {touched, error}, ...custom}) =>
     <Avatar src={input.value} {...custom} />
 );
 
-
-const ProfileBar = ({cancel, pristine, reset, submitting, invalid, classes, title}) => (
+const ProfileBar = ({onCancel, onDelete, pristine, reset, submitting, invalid, classes, title}) => (
     <AppBar color="default" position="static">
         <Toolbar>
-            <IconButton type="button" onClick={cancel} aria-label="Cancel">
+            <IconButton type="button"
+                        onClick={onCancel}
+                        aria-label="Cancel">
                 <ClearIcon/>
             </IconButton>
             <Typography className={classes.title} type="title">
                 {title} Profile
             </Typography>
+            <IconButton onClick={onDelete}
+                        className={classes.icon}
+                        type="button"
+                        aria-label="Delete">
+                <DeleteForeverIcon/>
+            </IconButton>
             <IconButton className={classes.icon}
                         type="submit"
                         disabled={invalid || submitting || pristine}
@@ -66,10 +75,10 @@ const ProfileBar = ({cancel, pristine, reset, submitting, invalid, classes, titl
                 <DoneIcon/>
             </IconButton>
         </Toolbar>
-
     </AppBar>
 
 );
+
 const ProfileView = ({classes}) => (
     <FormGroup className={classes.form}>
         <Field className={classes.avatar} name="photo" label="Avatar" component={renderImageUpload}/>
@@ -81,19 +90,18 @@ const ProfileView = ({classes}) => (
     </FormGroup>
 );
 
-
 class Edit extends React.Component {
-
     form_type;
 
     constructor(props) {
         super(props);
-        this.form_type = ( props.initialValues['_id']  ? 'edit' : 'add');
-        this.submit = this.submit.bind(this);
-        this.cancel = this.cancel.bind(this);
+        this.form_type = ( props.initialValues['_id'] ? 'edit' : 'add');
+        this.submitHandler = this.submitHandler.bind(this);
+        this.cancelHandler = this.cancelHandler.bind(this);
+        this.deleteHandler = this.deleteHandler.bind(this);
     }
 
-    submit(values) {
+    submitHandler(values) {
         this.props.dispatch({
             type: "ITEM_" + this.form_type.toUpperCase(),
             values
@@ -101,19 +109,28 @@ class Edit extends React.Component {
         this.props.dispatch(goBack());
     }
 
-    cancel() {
+    cancelHandler() {
         this.props.dispatch(goBack());
     }
 
-    render() {
+    deleteHandler() {
+        this.props.dispatch({
+            type: "ITEM_DELETE_MODAL_SHOW",
+            id: this.props.initialValues['_id']
+        });
+    }
 
+    render() {
         const isEditMode = this.form_type === 'edit';
         return (
             <Paper className="container" elevation={0} square={true}>
-                <form onSubmit={this.props.handleSubmit(this.submit)}>
+                <ListDelete/>
+                <form onSubmit={this.props.handleSubmit(this.submitHandler)}>
                     <ProfileBar title={isEditMode ? 'Edit' : 'Create'}
-                                {...this.props} cancel={this.cancel}/>
-                    <ProfileView elevation={0} square={true} {...this.props} />
+                                {...this.props}
+                                onDelete={this.deleteHandler}
+                                onCancel={this.cancelHandler}/>
+                    <ProfileView {...this.props} />
                 </form>
             </Paper>
         );
@@ -136,7 +153,7 @@ function mapEditStateToProps(state, own_props) {
 
     let form_data = find(
         state.items.list && state.items.list.data,
-        { '_id' : own_props.params.id}
+        {'_id': own_props.params.id}
     ) || {};
     return {
         initialValues: form_data

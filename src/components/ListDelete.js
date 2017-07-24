@@ -1,36 +1,48 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import Dialog, {DialogActions, DialogContent, DialogContentText, DialogTitle} from 'material-ui/Dialog';
+import Button from 'material-ui/Button';
+import Slide from 'material-ui/transitions/Slide';
 
-export class ListDelete extends React.Component {
+class ListDelete extends React.Component {
 
     constructor(props) {
         super(props);
         this.modalHide = this.modalHide.bind(this);
-        this.emailDelete = this.emailDelete.bind(this);
+        this.itemDelete = this.itemDelete.bind(this);
     }
 
     render() {
         return (
-
-            <div show={this.props.modal_delete.show}>
-                Are you sure you want to delete &nbsp;
-                <Button onClick={this.modalHide}>No</Button>
-                <Button onClick={this.emailDelete} bsStyle="primary">Yes</Button>
-            </div>
+            <Dialog open={this.props.modal_delete.show} transition={Slide} onRequestClose={this.modalHide}>
+                <DialogTitle>
+                    {"Delete Contact ?"}
+                </DialogTitle>
+                <DialogContent>
+                    <DialogContentText>
+                        Are you sure you want to permanently delete this contact?
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={this.modalHide} color="primary">
+                        No
+                    </Button>
+                    <Button onClick={this.itemDelete} color="primary">
+                        Yes
+                    </Button>
+                </DialogActions>
+            </Dialog>
         );
     }
 
-    emailDelete(event) {
+    itemDelete() {
         this.props.dispatch({
             type: "ITEM_DELETE",
             id: this.props.modal_delete.id
         });
-        this.props.dispatch({
-            type: "ITEM_DELETE_MODAL_HIDE"
-        });
     }
 
-    modalHide(event) {
+    modalHide() {
         this.props.dispatch({
             type: "ITEM_DELETE_MODAL_HIDE"
         });

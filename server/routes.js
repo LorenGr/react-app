@@ -41,7 +41,15 @@ router.route('/items/:id')
                 res.json(doc);
             }
         );
-
+    })
+    .delete(function (req, res) {
+        Item.findByIdAndRemove(
+            req.params.id,
+            function (err) {
+                if (err) res.send(err);
+                res.json(req.params.id);
+            }
+        );
     });
 
 module.exports = router;

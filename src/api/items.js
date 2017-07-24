@@ -17,13 +17,20 @@ export default class ApiItems {
             base
             + "/api/items/"
             + payload[0]['_id']
-        ,payload[0]);
+            , payload[0]);
+    }
+
+    static deleteList(payload) {
+        return axios.delete(
+            base
+            + "/api/items/"
+            + payload);
     }
 
     static addList(payload) {
         return axios.post(
             base
             + "/api/items"
-            ,payload[0]);
+            , payload[0]);
     }
 }
