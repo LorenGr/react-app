@@ -19,7 +19,6 @@ import DeleteForeverIcon from 'material-ui-icons/DeleteForever';
 
 
 const styleSheet = createStyleSheet('Edit', theme => ({
-
     title: {
         flex: 1
     },
@@ -51,7 +50,7 @@ const renderImageUpload = ({input, label, meta: {touched, error}, ...custom}) =>
     <Avatar src={input.value} {...custom} />
 );
 
-const ProfileBar = ({onCancel, onDelete, pristine, reset, submitting, invalid, classes, title}) => (
+const ProfileBar = ({editMode, onCancel, onDelete, pristine, reset, submitting, invalid, classes, title}) => (
     <AppBar color="default" position="static">
         <Toolbar>
             <IconButton type="button"
@@ -60,14 +59,15 @@ const ProfileBar = ({onCancel, onDelete, pristine, reset, submitting, invalid, c
                 <ClearIcon/>
             </IconButton>
             <Typography className={classes.title} type="title">
-                {title} Profile
+                {editMode ? 'Edit' : 'Create'} Profile
             </Typography>
-            <IconButton onClick={onDelete}
-                        className={classes.icon}
-                        type="button"
-                        aria-label="Delete">
+            {editMode ? <IconButton onClick={onDelete}
+                                    className={classes.icon}
+                                    type="button"
+                                    aria-label="Delete">
                 <DeleteForeverIcon/>
-            </IconButton>
+            </IconButton> : null}
+
             <IconButton className={classes.icon}
                         type="submit"
                         disabled={invalid || submitting || pristine}
@@ -79,9 +79,10 @@ const ProfileBar = ({onCancel, onDelete, pristine, reset, submitting, invalid, c
 
 );
 
-const ProfileView = ({classes}) => (
+const ProfileView = ({classes, editMode}) => (
     <FormGroup className={classes.form}>
-        <Field className={classes.avatar} name="photo" label="Avatar" component={renderImageUpload}/>
+        {editMode ?
+            <Field className={classes.avatar} name="photo" label="Avatar" component={renderImageUpload}/> : null}
         <Field className={classes.field} name="full_name" label="Full Name" component={renderTextField}/>
         <Field className={classes.field} name="location" label="Location" component={renderTextField}/>
         <Field className={classes.field} name="email" label="Email" component={renderTextField}/>
@@ -126,11 +127,11 @@ class Edit extends React.Component {
             <Paper className="container" elevation={0} square={true}>
                 <ListDelete/>
                 <form onSubmit={this.props.handleSubmit(this.submitHandler)}>
-                    <ProfileBar title={isEditMode ? 'Edit' : 'Create'}
+                    <ProfileBar editMode={isEditMode}
                                 {...this.props}
                                 onDelete={this.deleteHandler}
                                 onCancel={this.cancelHandler}/>
-                    <ProfileView {...this.props} />
+                    <ProfileView editMode={isEditMode} {...this.props} />
                 </form>
             </Paper>
         );
