@@ -31,7 +31,16 @@ npm start
 - [MongoDB model Files](model/)
 
 ## Libraries and Architecture
-*Stack : Webpack, React, Redux, Node, Express, Mongoose, MongoDB*
+
+######Stack :
+* Webpack
+* React
+* Redux
+* Node
+* Express
+* Mongoose
+* MongoDB
+
 The application was created with React and is being served and compiled with webpack. Communication between elements and state management is all being handled by a Redux architecture. The app is calling Node server through an Express API. Data is stored on MongoDB and communicates with the app through Mongoose middleware.
 
 ## Tests
