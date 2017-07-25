@@ -32,7 +32,7 @@ npm start
 
 ## Libraries and Architecture
 
-######Stack :
+###### Stack
 * Webpack
 * React
 * Redux
