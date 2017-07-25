@@ -66,10 +66,6 @@ const styleSheet = createStyleSheet('ListItem', theme => ({
 
 class ListItem extends React.Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         const {item, classes} = this.props;
 

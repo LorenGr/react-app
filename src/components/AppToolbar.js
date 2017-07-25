@@ -23,10 +23,6 @@ const styleSheet = createStyleSheet('AppToolbar', {
 
 class AppToolbar extends React.Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         const classes = this.props.classes;
         return (
