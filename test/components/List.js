@@ -30,7 +30,7 @@ describe("List component", () => {
                 }
             };
             const wrapper = shallow(<List {...props} />);
-            assert.equal(wrapper.find('ProgressBar').length, 1);
+            assert.equal(wrapper.find('.loader').length, 1);
         });
     });
 });

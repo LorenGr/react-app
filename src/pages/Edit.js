@@ -91,7 +91,7 @@ const ProfileView = ({classes, editMode}) => (
     </FormGroup>
 );
 
-class Edit extends React.Component {
+export class Edit extends React.Component {
     form_type;
 
     constructor(props) {
@@ -125,8 +125,8 @@ class Edit extends React.Component {
         const isEditMode = this.form_type === 'edit';
         return (
             <Paper className="container" elevation={0} square={true}>
-                <ListDelete/>
-                <form onSubmit={this.props.handleSubmit(this.submitHandler)}>
+                <ListDelete id="deleteDialog" />
+                <form id="editForm" onSubmit={this.props.handleSubmit(this.submitHandler)}>
                     <ProfileBar editMode={isEditMode}
                                 {...this.props}
                                 onDelete={this.deleteHandler}

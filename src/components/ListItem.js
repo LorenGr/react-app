@@ -64,7 +64,7 @@ const styleSheet = createStyleSheet('ListItem', theme => ({
     },
 }));
 
-class ListItem extends React.Component {
+export class ListItem extends React.Component {
 
     render() {
         const {item, classes} = this.props;
@@ -72,7 +72,7 @@ class ListItem extends React.Component {
         return (
             <Button className={classes.root}>
                 <Link className={classes.link} to={'edit/' + item['_id']}>
-                    <Card>
+                    <Card className="cardContainer">
                         <CardMedia className={classes.photo}>
                             <img src={item.photo}/>
                         </CardMedia>

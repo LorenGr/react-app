@@ -16,10 +16,10 @@ describe("ListDelete component", () => {
                     name: ''
                 }
             };
-
             const wrapper = shallow(<ListDelete {...props} />);
-            assert.equal(wrapper.find('Modal').length, 1);
-            assert.equal(wrapper.find('Button').length, 2);
+            assert.equal(wrapper.find('#listDeleteContainer').length, 1);
+            assert.equal(wrapper.find('#cancelButton').length, 1);
+            assert.equal(wrapper.find('#confirmButton').length, 1);
         });
     });
 });

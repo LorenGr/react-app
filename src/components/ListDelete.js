@@ -4,7 +4,7 @@ import Dialog, {DialogActions, DialogContent, DialogContentText, DialogTitle} fr
 import Button from 'material-ui/Button';
 import Slide from 'material-ui/transitions/Slide';
 
-class ListDelete extends React.Component {
+export class ListDelete extends React.Component {
 
     constructor(props) {
         super(props);
@@ -14,7 +14,7 @@ class ListDelete extends React.Component {
 
     render() {
         return (
-            <Dialog open={this.props.modal_delete.show} transition={Slide} onRequestClose={this.modalHide}>
+            <Dialog id="listDeleteContainer" open={this.props.modal_delete.show} transition={Slide} onRequestClose={this.modalHide}>
                 <DialogTitle>
                     {"Delete Contact ?"}
                 </DialogTitle>
@@ -24,10 +24,10 @@ class ListDelete extends React.Component {
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={this.modalHide} color="primary">
+                    <Button id="cancelButton" onClick={this.modalHide} color="primary">
                         No
                     </Button>
-                    <Button onClick={this.itemDelete} color="primary">
+                    <Button id="confirmButton" onClick={this.itemDelete} color="primary">
                         Yes
                     </Button>
                 </DialogActions>

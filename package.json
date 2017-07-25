@@ -6,6 +6,7 @@
   "dependencies": {
     "axios": "^0.16.2",
     "body-parser": "^1.17.2",
+    "debug-fd-deprecated": "^1.0.1",
     "express": "^4.15.3",
     "foreman": "^2.0.0",
     "lodash.find": "^4.6.0",
@@ -63,7 +64,7 @@
     ]
   },
   "scripts": {
-    "test": "nyc mocha --compilers js:babel-register --recursive --require babel-polyfill --require ignore-styles",
+    "test": "nyc mocha  --require debug-fd-deprecated --compilers js:babel-register --recursive --require babel-polyfill --require ignore-styles",
     "start": "NODE_ENV=production npm run webpack && node index.js",
     "start-dev": "node index.js",
     "heroku-prebuild": "npm install --only=dev",

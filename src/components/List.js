@@ -15,7 +15,7 @@ function dispatchFetch() {
     });
 }
 
-class List extends React.Component {
+export class List extends React.Component {
 
     constructor(props) {
         super(props);
@@ -56,7 +56,7 @@ class List extends React.Component {
 
             </div>
         ) : (
-            <LinearProgress/>
+            <LinearProgress className="loader" />
         );
     }
 }

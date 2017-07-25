@@ -12,12 +12,13 @@ describe("Edit component", () => {
                 },
                 handleSubmit: () => {
                 },
-                invalid : true,
+                invalid: true,
                 submitting: false
             };
 
             const wrapper = shallow(<Edit {...props} />);
-            assert.equal(wrapper.find('PageHeader span').text(),'Create');
+            assert.equal(wrapper.find('#deleteDialog').length, 1);
+            assert.equal(wrapper.find('#editForm').length, 1);
 
         });
     });

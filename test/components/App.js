@@ -1,16 +1,28 @@
 import React from 'react';
-import {shallow} from 'enzyme';
+import {createShallow} from 'material-ui/test-utils';
 import assert from 'assert';
 
-import App from '../../src/components/App';
+import {AppStructure} from '../../src/components/AppStructure';
 
 describe("App component", () => {
     describe("render", () => {
+
+        let shallow;
+
+        before(() => {
+            shallow = createShallow();
+        });
+
+        const props = {
+            classes: {container: {}},
+            location: {pathname: {}}
+        };
+
+
         it("should render component", () => {
-            const wrapper = shallow(<App/>);
+            const wrapper = shallow(<AppStructure {...props}/>);
             assert.equal(wrapper.find('.container').length, 1);
-            assert.equal(wrapper.find('AppToolbar').length, 1);
-            assert.equal(wrapper.find('.data-grid').length, 1);
+            assert.equal(wrapper.find('.toolbar').length, 1);
         });
     });
 });

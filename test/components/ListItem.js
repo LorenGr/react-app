@@ -1,23 +1,32 @@
 import React from 'react';
-import {shallow} from 'enzyme';
+import {createShallow} from 'material-ui/test-utils';
 import assert from 'assert';
 
 import {ListItem} from '../../src/components/ListItem';
 
 describe("ListItem component", () => {
     describe("render", () => {
+
+        let shallow;
+
+        before(() => {
+            shallow = createShallow();
+        });
+
+        //Mock the props
+        const props = {
+            item: {
+                id: 0
+            },
+            classes : {
+                root:{},photo:{},caption:{},
+                contet : {},link:{},title:{}
+            }
+        };
+
         it("should render component", () => {
-
-            //Mock the props
-            const props = {
-                item: {
-                    id: 0
-                }
-            };
-
             const wrapper = shallow(<ListItem {...props} />);
-            assert.equal(wrapper.find('.ItemContainer').length, 1);
-            assert.equal(wrapper.find('Button').length, 2);
+            assert.equal(wrapper.find('.cardContainer').length, 1);
         });
     });
 });

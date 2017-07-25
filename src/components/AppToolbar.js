@@ -21,15 +21,13 @@ const styleSheet = createStyleSheet('AppToolbar', {
     },
 });
 
-class AppToolbar extends React.Component {
-
+export class AppToolbar extends React.Component {
     render() {
         const classes = this.props.classes;
         return (
             <div className={classes.root}>
                 <AppBar position="fixed" className={classes.bar}>
                     <Toolbar>
-
                         <IconButton color="contrast" aria-label="Menu">
                             <AssignmentIndIcon/>
                         </IconButton>
@@ -43,8 +41,6 @@ class AppToolbar extends React.Component {
                                 <PersonAddIcon/>
                             </IconButton>
                         </Link>
-
-
                     </Toolbar>
                 </AppBar>
             </div>

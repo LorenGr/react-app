@@ -17,7 +17,7 @@ const styleSheet = createStyleSheet('AppStructure', theme => ({
     }
 }));
 
-class AppStructure extends React.Component {
+export class AppStructure extends React.Component {
 
     render() {
         const fadeConfig = {stiffness: 200, damping: 22};
