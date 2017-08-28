@@ -1,4 +1,4 @@
-# Contact Book App [![Build Status](https://travis-ci.org/LorenGr/dogwalkr.svg?branch=master)](https://travis-ci.org/LorenGr/dogwalkr)
+# Contact Book App [![Build Status](https://travis-ci.org/LorenGr/dogwalkr.svg?branch=master)](https://travis-ci.org/LorenGr/ContactBook)
 
 This is a basic app that provides a list of people and their contact information.
 Each profile tile is zoomable into a profile page which can be edited and deleted.
