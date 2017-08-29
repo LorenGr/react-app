@@ -45,8 +45,3 @@ The application was created with React and is being served and compiled with web
 
 ## Tests
 All pages, reducers and sagas have been unit tested and components were tested with Enzyme.
-
-### About the Author
-My name is Loren Grixti, I am a Front-End developer coming from the island of Malta, living in Montreal, Canada.
-I specialise in large scale web application developement. This space is my js playground where I try new stacks and experiment with emerging patterns.
-.
