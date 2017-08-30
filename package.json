@@ -1,5 +1,5 @@
 {
-  "name": "dogwalkr",
+  "name": "ContactBook",
   "version": "1.0.0",
   "description": "Personal Project",
   "main": "index.js",
@@ -73,12 +73,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LorenGr/dogwalkr.git"
+    "url": "git+https://github.com/LorenGr/ContactBook.git"
   },
   "author": "Loren Grixti",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/LorenGr/dogwalkr/issues"
-  },
-  "homepage": "https://github.com/LorenGr/dogwalkr#readme"
+  "homepage": "https://github.com/LorenGr/ContactBook#readme"
 }

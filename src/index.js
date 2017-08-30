@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {createStore, applyMiddleware, compose} from 'redux';
+import {Provider} from 'react-redux';
+
 import {browserHistory, Router, Route, IndexRoute} from 'react-router';
 import {syncHistoryWithStore, routerMiddleware} from 'react-router-redux';
-import {Provider} from 'react-redux';
+
 import createSagaMiddleware from 'redux-saga';
 import './stylesheets/main.less';
 import App from './components/App';
